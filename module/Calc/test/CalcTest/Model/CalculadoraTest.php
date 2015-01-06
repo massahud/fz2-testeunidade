@@ -82,7 +82,7 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
      * @dataProvider operacoesProvider
      */
     public function tecla_primeiraOperacaoDeveColocarValorAtualEAPropriaOperacaoNoRegistrador($operacao) {
-        $this->calculadora->tectecla_primeiraOperacaoDeveColocarValorAtualEAPropriaOperacaoNoRegistradorla(4)->tecla(0)->tecla(7);
+        $this->calculadora->tecla(4)->tecla(0)->tecla(7);
         $this->calculadora->tecla($operacao);        
         Assert\that($this->calculadora->getRegistrador()[0])->eq(407);
         Assert\that($this->calculadora->getRegistrador()[1])->eq($operacao);                
