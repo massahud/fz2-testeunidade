@@ -87,6 +87,4 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
         Assert\that($this->calculadora->getRegistrador()[0])->eq(407);
         Assert\that($this->calculadora->getRegistrador()[1])->eq($operacao);                
     }
-
-
 }
