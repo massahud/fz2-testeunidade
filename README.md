@@ -10,7 +10,7 @@ Este projeto foi criado execução no netbeans em windows. Sendo necessária a i
 
 Os softwares necessários são os seguintes:
 1. Cliente git: https://msysgit.github.io/ (após a instalação colocar as pastas **cmd** e **bin** no path, se não tiverem sido colocadas automaticamente).
-2. Xampp para PHP 5.5 (apesar de existir php 5.6, é requisito do projeto do synergia o php 5.5): https://www.apachefriends.org/ (após a instalação colocar a pasta **php** no path)
+2. Xampp para PHP 5.6: https://www.apachefriends.org/ (após a instalação colocar a pasta **php** no path)
 Se o xampp for instalado via zip, é necessário editar todos os arquivos .bat da pasta php e o php.ini, modificando as linhas que possuem o diretorio padrão **/xampp** para o diretório onde o xampp foi descompactado (ex: M:\xampp).
 3. Composer: obtenha o composer.phar em https://getcomposer.org/ e coloque no diretório do php do xampp.
 4. Netbeans com suporte a php e html5: http://www.netbeans.org/download.
