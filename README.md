@@ -16,10 +16,11 @@ Os softwares necessários são os seguintes:
 Existe obter a versão zip se não tiver permissão de instalação, basta depois instalar os plugins necessários para php/html5
 5. Node.js: http://nodejs.org/ (caso não possua permissão de administrador, siga os passos de [NODE_PORTATIL.md](NODE_PORTATIL.md)
 6. Karma:  `npm install -g karma`
-7. Jasmine: `npm install -g jasmine`
-8. Karma-jasmine:  `npm install -g karma-jasmine`
-9. Karma-chrome-launcher: `npm install -g karma-chrome-launcher`
-10. Karma-firefox-launcher: `npm install -g karma-chrome-launcher`
+7. Karma-cli:  `npm install -g karma-cli`
+8. Jasmine: `npm install -g jasmine`
+9. Karma-jasmine:  `npm install -g karma-jasmine`
+10. Karma-chrome-launcher: `npm install -g karma-chrome-launcher`
+11. Karma-firefox-launcher: `npm install -g karma-firefox-launcher`
 
 Configuração
 -----------------------
@@ -72,5 +73,26 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
 </IfModule>
 ```
 3. Inicie o apache e acesse http://localhost/tu para verificar se a aplicação está funcionando corretamente
+
+### Configurando os testes javascript no netbeans ###
+1. Clique com o botão direito no projeto
+2. Selecione **Properties**
+3. Selecione **Javascript Testing** na árvore da esquerda
+4. Selecione **Karma** em *Testing provider*
+5. Preencha o campo *Karma* com o caminho para o arquivo karma.cmd de seu node.js
+6. Preencha o campo *Configuration* com o caminho do arquivo **js-test/karma.conf.js** do projeto
+7. Marque os dois checkboxes da tela
+8. **Ok**
+9. No final da árvore do projeto deve aparecer uma entrada chamada **Karma**
+10. Clique com o botão direito em **Karma** e escolha **Start**
+11. Se tudo der certo, os testes serão executados
+12. Se aparecer uma mensagem de erro informando que um administrador instalou o chrome no sistema, significa que você possui um chrome local além do instalado pelo administrador, e o karma está abrindo primeiro o chrome local. Para resolver isso, siga os seguintes passos:
+  1. Abra o arquivo ***node_modules\karma-chrome-launcher*** que está dentro do diretório de instalaçãod o node.js.
+  2. Procure pela linha `var prefixes = [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];`
+  3. Coloque o primeiro item no final da seguinte forma:
+  `var prefixes = [process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)'], process.env.LOCALAPPDATA];`
+  4. Salve o arquivo
+  5. Clique com o botão direito novamente em **Karma** no netbeans e escolha **Restart**
+  6. Dessa vez os testes devem executar
 
 
