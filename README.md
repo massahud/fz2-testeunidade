@@ -9,8 +9,9 @@ Dependências
 Este projeto foi criado execução no netbeans em windows. Sendo necessária a instalação e configuração de algumas dependências para sua execução completa.
 
 Os softwares necessários são os seguintes:
-1. Cliente git: https://msysgit.github.io/
-2. Xampp: https://www.apachefriends.org/ (s eo xampp for instalado via zip, é necessário editar todos os arquivos .bat da pasta php e o php.ini modificando o diretorio **/xampp** para o diretório onde o xampp foi descompactado (ex: M:\xampp).
+1. Cliente git: https://msysgit.github.io/ (após a instalação colocar as pastas **cmd** e **bin** no path, se não tiverem sido colocadas automaticamente).
+2. Xampp para PHP 5.5 (apesar de existir php 5.6, é requisito do projeto do synergia o php 5.5): https://www.apachefriends.org/ (após a instalação colocar a pasta **php** no path)
+Se o xampp for instalado via zip, é necessário editar todos os arquivos .bat da pasta php e o php.ini, modificando as linhas que possuem o diretorio padrão **/xampp** para o diretório onde o xampp foi descompactado (ex: M:\xampp).
 3. Composer: obtenha o composer.phar em https://getcomposer.org/ e coloque no diretório do php do xampp.
 4. Netbeans com suporte a php e html5: http://www.netbeans.org/download.
 Existe obter a versão zip se não tiver permissão de instalação, basta depois instalar os plugins necessários para php/html5
@@ -31,7 +32,9 @@ Configuração
 4. Coloque o caminho do php.exe do xampp em PHP5 interpreter
 5. **PHP > Frameworks & Tools**
 6. Selecione **Composer** na lista da esquerda
-7. Coloque o caminho do arquivo composer.phar que está no diretório php do xampp
+7. Coloque o caminho do arquivo **composer.phar** que está no diretório php do xampp
+8. Selecione **PHPUnit** na lista da esquerda
+9. Coloque o caminho do arquivo **phpunit** que está no diretório php do xampp
 
 
 ### Obtendo o projeto ###
@@ -74,7 +77,7 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
 ```
 3. Inicie o apache e acesse http://localhost/tu para verificar se a aplicação está funcionando corretamente
 
-### Configurando os testes javascript no netbeans ###
+### Testes javascript no netbeans ###
 1. Clique com o botão direito no projeto
 2. Selecione **Properties**
 3. Selecione **Javascript Testing** na árvore da esquerda
@@ -89,10 +92,15 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
 12. Se aparecer uma mensagem de erro informando que um administrador instalou o chrome no sistema, significa que você possui um chrome local além do instalado pelo administrador, e o karma está abrindo primeiro o chrome local. Para resolver isso, siga os seguintes passos:
   1. Abra o arquivo ***node_modules\karma-chrome-launcher*** que está dentro do diretório de instalaçãod o node.js.
   2. Procure pela linha `var prefixes = [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];`
-  3. Coloque o primeiro item no final da seguinte forma:
+  3. Coloque o primeiro item no final:
   `var prefixes = [process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)'], process.env.LOCALAPPDATA];`
   4. Salve o arquivo
   5. Clique com o botão direito novamente em **Karma** no netbeans e escolha **Restart**
   6. Dessa vez os testes devem executar
+
+### Execução dos testes ###
+1. Clique com o botão direito no projeto
+2. Selecione **Test**
+3. Os testes phpunit e karma devem executar sem erro
 
 
