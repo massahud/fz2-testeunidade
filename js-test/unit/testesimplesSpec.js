@@ -10,7 +10,7 @@ describe('teste simples', function() {
   describe('Teste simples', function() {
      var i = 1;
      it('should be 1', function() {
-         jstestdriver.console.log("Hello World!");
+         console.log("Hello World!");
             expect(i).toBe(1);
      });
   });   
