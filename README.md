@@ -15,9 +15,9 @@ Os softwares necessários são os seguintes:
 
   1. Se o xampp for instalado via zip, é necessário editar todos os arquivos .bat da pasta php e o php.ini, modificando as linhas que possuem o diretorio padrão **/xampp** para o diretório onde o xampp foi descompactado (ex: M:\xampp).
   2. Habilite a extensão openssl do php descomentando a seguinte linha:
-  ```ini
-    ;extension=php_openssl.dll
-  ```
+    ```ini
+      ;extension=php_openssl.dll
+    ```
 
 4. Composer: obtenha o composer.phar em https://getcomposer.org/ e coloque no diretório do php do xampp.
 5. Netbeans com suporte a php e html5: http://www.netbeans.org/download. Existe obter a versão zip se não tiver permissão de instalação, basta depois instalar os plugins necessários para php/html5
@@ -102,16 +102,16 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
 10. Clique com o botão direito em **Karma** e escolha **Start**
 11. Se tudo der certo, os testes serão executados
 12. Se aparecer uma mensagem de erro informando que um administrador instalou o chrome no sistema, significa que você possui um chrome local além do instalado pelo administrador, e o karma está abrindo primeiro o chrome local. Para resolver isso, siga os seguintes passos:
-  1. Abra o arquivo ***node_modules\karma-chrome-launcher\index.js*** que está dentro do diretório de instalaçãod o node.js.
-  2. Procure pela linha
-  ```javascript
-  var prefixes = [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];
-  ```
+  1. Abra o arquivo ***node_modules\karma-chrome-launcher\index.js*** que está dentro do diretório de instalação do node.js.
+  2. Procure pela linha  
+    ```javascript
+    var prefixes = [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];
+    ```
 
-  3. Coloque o primeiro item no final:
-  ```javascript
-  var prefixes = [process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)'], process.env.LOCALAPPDATA];
-  ```
+  3. Coloque o primeiro item no final:  
+    ```javascript
+    var prefixes = [process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)'], process.env.LOCALAPPDATA];
+    ```
 
   4. Salve o arquivo
   5. Clique com o botão direito novamente em **Karma** no netbeans e escolha **Restart**
