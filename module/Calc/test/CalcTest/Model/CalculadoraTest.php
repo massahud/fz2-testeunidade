@@ -40,15 +40,15 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function displayDeveSerVazioAoCriar() {
-        \Assert\that($this->calculadora->getDisplay())->string()->eq('');
+    public function displayDeveSerVazioAoCriar() {        
+        Assert\that($this->calculadora->getDisplay())->string()->eq('');
     }   
     
     /**
      * @test
      */
     public function registradorDeveConter0AoCriar() {
-        \Assert\that($this->calculadora->getRegistrador())->isArray()->noContent();
+        Assert\that($this->calculadora->getRegistrador())->isArray()->noContent();
     }
     
     

@@ -15,9 +15,11 @@
     "require-dev": {
         "zendframework/zftool": "dev-master",
         "zendframework/zend-developer-tools": "dev-master",
+        "hamcrest/hamcrest-php": "dev-master",
         "phpunit/phpunit": "4.4.*",
         "phpunit/dbunit": ">=1.2",
         "beberlei/assert": "2.3.*@dev",
-        "codeception/verify": "*"
+        "codeception/verify": "*",
+        "hafriedlander/phockito": "dev-master"
     }
 }

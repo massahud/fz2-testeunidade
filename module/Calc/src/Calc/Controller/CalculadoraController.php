@@ -5,9 +5,17 @@ namespace Calc\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Session\Container;
+use Calc\Model\Calculadora;
 
 class CalculadoraController extends AbstractActionController {            
+    /**
+     * @var Calculadora
+     */
     private $calculadora;
+    /**     
+     * @return Zend\Session\Container
+     */
+    private $calculadoraContainer;
 
     public function indexAction() {
         return new ViewModel();
@@ -15,16 +23,15 @@ class CalculadoraController extends AbstractActionController {
 
     public function teclaAction() {
         $this->restoreState();        
-        $this->saveState();
         return array('display' => $this->calculadora->getDisplay(),
             'registrador' => '1');
     }
     
-    private function getContainer() {
-        if (empty($this->__calculadoraContainer)) {            
-            $this->__calculadoraContainer = new Container('namespace');
+    public function getContainer() {
+        if (empty($this->calculadoraContainer)) {            
+            $this->calculadoraContainer = new Container('namespace');
         }
-        return $this->__calculadoraContainer;
+        return $this->calculadoraContainer;
     }
     
     private function getTecla() {
@@ -36,7 +43,11 @@ class CalculadoraController extends AbstractActionController {
     }
 
     private function restoreState() {      
-        $this->calculadora = $this->getContainer()->calculadora or new Calculadora();
+        $this->calculadora = $this->getContainer()->offsetGet('calculadora') or new Calculadora();
+    }
+
+    public function setContainer($container) {
+        $this->calculadoraContainer = $container;
     }
 
 }
