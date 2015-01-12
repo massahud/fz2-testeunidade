@@ -82,7 +82,6 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
         [...]
       </IfModule>
     ```
-
 3. Inicie o apache e acesse http://localhost/tu para verificar se a aplicação está funcionando corretamente
 
 ### Testes javascript no netbeans ###
