@@ -102,7 +102,7 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
 10. Clique com o botão direito em **Karma** e escolha **Start**
 11. Se tudo der certo, os testes serão executados
 12. Se aparecer uma mensagem de erro informando que um administrador instalou o chrome no sistema, significa que você possui um chrome local além do instalado pelo administrador, e o karma está abrindo primeiro o chrome local. Para resolver isso, siga os seguintes passos:
-  1. Abra o arquivo ***node_modules\karma-chrome-launcher*** que está dentro do diretório de instalaçãod o node.js.
+  1. Abra o arquivo ***node_modules\karma-chrome-launcher\index.js*** que está dentro do diretório de instalaçãod o node.js.
   2. Procure pela linha
   ```javascript
   var prefixes = [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];
