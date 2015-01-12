@@ -12,7 +12,6 @@ Os softwares necessários são os seguintes:
 
 1. Cliente git: https://msysgit.github.io/ (após a instalação colocar as pastas **cmd** e **bin** no path, se não tiverem sido colocadas automaticamente).
 2. Xampp para PHP 5.6: https://www.apachefriends.org/ (após a instalação colocar a pasta **php** no path)
-
   1. Se o xampp for instalado via zip, é necessário editar todos os arquivos .bat da pasta php e o php.ini, modificando as linhas que possuem o diretorio padrão **/xampp** para o diretório onde o xampp foi descompactado (ex: M:\xampp).
   2. Habilite a extensão openssl do php descomentando a seguinte linha:
     ```ini
