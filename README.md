@@ -112,9 +112,8 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
     ```javascript
     var prefixes = [process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)'], process.env.LOCALAPPDATA];
     ```
-
   4. Salve o arquivo
-  5. Clique com o botão direito novamente em **Karma** no netbeans e escolha **Restart**
+  5.  Clique com o botão direito novamente em **Karma** no netbeans e escolha **Restart**
   6. Dessa vez os testes devem executar
 
 ### Execução dos testes ###
