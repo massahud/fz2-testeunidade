@@ -1,6 +1,6 @@
 <?php
 
-namespace CalcTest;
+namespace Calc;
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
@@ -20,6 +20,7 @@ class Bootstrap
     public static function init()
     {
         $zf2ModulePaths = array(dirname(dirname(__DIR__)));
+        print 'diretorio '.__DIR__.'\n';        
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
         }
@@ -57,8 +58,8 @@ class Bootstrap
 
     protected static function initAutoloader()
     {
-        $vendorPath = static::findParentPath('vendor');
-
+        $vendorPath = static::findParentPath('vendor');        
+        
         $zf2Path = getenv('ZF2_PATH');
         if (!$zf2Path) {
             if (defined('ZF2_PATH')) {
@@ -75,11 +76,18 @@ class Bootstrap
                 'Unable to load ZF2. Run `php composer.phar install` or'
                 . ' define a ZF2_PATH environment variable.'
             );
-        }
+        }        
 
         if (file_exists($vendorPath . '/autoload.php')) {
             include $vendorPath . '/autoload.php';
         }
+        
+        set_include_path(implode(PATH_SEPARATOR, array(    
+            $vendorPath . '/hamcrest/hamcrest-php/hamcrest',
+            get_include_path()
+        )));
+
+        require_once 'Hamcrest.php';
 
         include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
         AutoloaderFactory::factory(array(
@@ -87,7 +95,7 @@ class Bootstrap
                 'autoregister_zf' => true,
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
-                ),
+                )
             ),
         ));
     }

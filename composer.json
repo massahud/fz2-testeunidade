@@ -16,10 +16,11 @@
         "zendframework/zftool": "dev-master",
         "zendframework/zend-developer-tools": "dev-master",
         "hamcrest/hamcrest-php": "dev-master",
-        "phpunit/phpunit": "4.4.*",
+        "hafriedlander/phockito": "1.0.0",
+        "phpunit/phpunit": "dev-master",
         "phpunit/dbunit": ">=1.2",
         "beberlei/assert": "2.3.*@dev",
-        "codeception/verify": "*",
-        "hafriedlander/phockito": "dev-master"
+        "codeception/verify": "*"
+        
     }
 }

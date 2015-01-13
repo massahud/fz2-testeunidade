@@ -7,33 +7,48 @@ use Zend\View\Model\ViewModel;
 use Zend\Session\Container;
 use Calc\Model\Calculadora;
 
-class CalculadoraController extends AbstractActionController {            
+class CalculadoraController extends AbstractActionController {
+
     /**
      * @var Calculadora
      */
     private $calculadora;
-    /**     
+
+    /**
      * @return Zend\Session\Container
      */
     private $calculadoraContainer;
+
+    /**
+     * @var Container $calculadoraContainer
+     * @param Calculadora $calculadora
+     * @param Container $calculadoraContainerva
+     */
+    function __construct(Container $calculadoraContainer = NULL) {
+        if ($calculadoraContainer == NULL) {
+            throw new \InvalidArgumentException('calculadoraContainer não pode ser null');
+        }
+
+        $this->calculadoraContainer = $calculadoraContainer;
+        $this->calculadora = $calculadoraContainer->calculadora;
+        if ($this->calculadora == NULL) {
+            $this->calculadora = new Calculadora();
+            $calculadoraContainer->calculadora = $this->calculadora;
+        }
+    }
 
     public function indexAction() {
         return new ViewModel();
     }
 
     public function teclaAction() {
-        $this->restoreState();        
-        return array('display' => $this->calculadora->getDisplay(),
-            'registrador' => '1');
+        
     }
-    
+
     public function getContainer() {
-        if (empty($this->calculadoraContainer)) {            
-            $this->calculadoraContainer = new Container('namespace');
-        }
         return $this->calculadoraContainer;
     }
-    
+
     private function getTecla() {
         return $this->params('tecla');
     }
@@ -42,12 +57,12 @@ class CalculadoraController extends AbstractActionController {
         $this->getContainer()->display = $this->display or '';
     }
 
-    private function restoreState() {      
-        $this->calculadora = $this->getContainer()->offsetGet('calculadora') or new Calculadora();
-    }
-
     public function setContainer($container) {
         $this->calculadoraContainer = $container;
+    }
+
+    public function getCalculadora() {
+        return $this->calculadora;
     }
 
 }
