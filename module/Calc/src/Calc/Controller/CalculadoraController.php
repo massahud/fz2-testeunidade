@@ -45,20 +45,8 @@ class CalculadoraController extends AbstractActionController {
         
     }
 
-    public function getContainer() {
-        return $this->calculadoraContainer;
-    }
-
     private function getTecla() {
         return $this->params('tecla');
-    }
-
-    private function saveState() {
-        $this->getContainer()->display = $this->display or '';
-    }
-
-    public function setContainer($container) {
-        $this->calculadoraContainer = $container;
     }
 
     public function getCalculadora() {

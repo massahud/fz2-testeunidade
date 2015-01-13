@@ -34,45 +34,27 @@ class CalculadoraControllerTest extends PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function __construct_deveCriarUmaCalculadoraSeContainerNaoPossuirUma() {
-        $this->container->calculadora = NULL;
-        $controller = new CalculadoraController($this->container);
-        Assert\that($controller->getCalculadora())->notNull()->notSame($this->calculadora);
-    }
-    
-    /**
-     * @test
-     */
-    public function getContainer_deveRetornarUmNovoContainerSeNenhumFoiInjetado() {                
-        Assert\that($this->calculadoraController->getContainer())->notNull()->isInstanceOf('Zend\Session\Container');
-    }
-    
-    /**
-     * @test
-     */
-    public function getContainer_deveRetornarSempreOMesmoContainer() {
-        $container = $this->calculadoraController->getContainer();
-        Assert\that($this->calculadoraController->getContainer())->same($container);
-        Assert\that($this->calculadoraController->getContainer())->same($container);
-    }
-    
-    /**
-     * @test
-     */
-    public function getContainer_deveRetornarContainerInjetadoNoSet() {
-        $container = new Container();
-        $this->calculadoraController->setContainer($container);        
-        Assert\that($this->calculadoraController->getContainer())->same($container);
-    }
-        
-    
-    /**
-     * @test
-     */
-    public function estado_deveRestaurarCalculadoraAoConstruir() {        
+    public function __construct_deveRestaurarCalculadoraDoContainer() {        
         Assert\that($this->calculadoraController->getCalculadora())->same($this->calculadora);
     }
         
+    /**
+     * @test
+     */
+    public function __construct_deveInserirNovaCalculadoraNoContainerSeNaoPossuirUma() {
+        $this->container->calculadora = NULL;
+        $controller = new CalculadoraController($this->container);
+        Assert\that($this->container->calculadora)->notNull()->notSame($this->calculadora)->same($controller->getCalculadora());
+    }
     
+    /**
+     * @test
+     */
+    public function teclaAction_deveTeclarNaCalculadora() {
+        $calculadora = Phockito::mock('Calc\Model\Calculadora');
+        $this->container->calculadora = $calculadora;
+        $controller = new CalculadoraController($this->container);
+        $controller->teclaAction();
+    }
     
 }
