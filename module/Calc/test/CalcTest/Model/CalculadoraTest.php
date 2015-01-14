@@ -11,9 +11,7 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
      */
     protected $calculadora;
     
-    private static $NUMEROS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    private static $OPERACOES = ['-', '+', '/', '*'];
-    const IGUAL = '=';
+    
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -25,16 +23,16 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
     
     public function teclasValidasProvider() {
         return [
-            array_merge(self::$NUMEROS,self::$OPERACOES,array(self::IGUAL))
+            array_merge(self::$NUMEROS,  Calculadora::OPERACOES,array(Calculadora::IGUAL))
         ];
     }
     
     public function numerosProvider() {
-        return [self::$NUMEROS];
+        return [Calculadora::NUMEROS];
     }
     
     public function operacoesProvider() {
-        return [self::$OPERACOES];
+        return [Calculadora::OPERACOES];
     }
     
     /**

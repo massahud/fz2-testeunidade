@@ -19,12 +19,14 @@ class Calculadora {
     private $registrador = array();
 
     /**
-     * Números aceitos pela calculadora
-     * @var array 
+     * Números aceitos pela calculadora     
      */
-    private static $NUMEROS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    private static $OPERACOES = ['-', '+', '/', '*'];
-
+    const NUMEROS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    /**
+     * Operações aceitas pela calculadora
+     */
+    const OPERACOES = ['-', '+', '/', '*'];
+    
     const IGUAL = '=';
 
     public function getDisplay() {
