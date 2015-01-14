@@ -22,8 +22,8 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
     }
     
     public function teclasValidasProvider() {
-        return [
-            array_merge(self::$NUMEROS,  Calculadora::OPERACOES,array(Calculadora::IGUAL))
+        return [            
+            array_merge(Calculadora::NUMEROS,  Calculadora::OPERACOES,array(Calculadora::IGUAL))
         ];
     }
     

@@ -34,9 +34,9 @@ class Calculadora {
     }
 
     public function tecla($tecla) {
-        if (in_array($tecla, self::$NUMEROS)) {
+        if (in_array($tecla, self::NUMEROS)) {
             $this->display .= $tecla;
-        } else if (in_array($tecla, self::$OPERACOES)) {            
+        } else if (in_array($tecla, self::OPERACOES)) {            
             array_push($this->registrador, $this->display);
             array_push($this->registrador, $tecla);
             print $this->registrador[0];
