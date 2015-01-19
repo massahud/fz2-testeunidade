@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of DependsTest
+ * Classe de teste que exemplifica @depends
  *
  * @author massahud
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="Bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="calc-testes">
+            <directory>./Calc/test/Calc</directory>
+        </testsuite>
+        <testsuite name="application-testes">
+            <directory>./Application/test/Application</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

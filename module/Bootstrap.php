@@ -20,7 +20,6 @@ class Bootstrap
     public static function init()
     {
         $zf2ModulePaths = array(dirname(dirname(__DIR__)));
-        print 'diretorio '.__DIR__.'\n';        
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
         }
@@ -35,6 +34,7 @@ class Bootstrap
                 'module_paths' => $zf2ModulePaths,
             ),
             'modules' => array(
+                'Application',
                 'Calc'
             )
         );
@@ -47,7 +47,7 @@ class Bootstrap
 
     public static function chroot()
     {
-        $rootPath = dirname(static::findParentPath('module'));
+        $rootPath = dirname(static::findParentPath('module'));        
         chdir($rootPath);
     }
 
