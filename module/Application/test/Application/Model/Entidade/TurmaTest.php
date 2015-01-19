@@ -1,8 +1,7 @@
 <?php
 
-namespace Application\Model\Entidade;
-
-use \Assert;
+use Application\Model\Entidade\Turma;
+use Application\Model\Entidade\Aluno;
 
 class TurmaTest extends \PHPUnit_Framework_TestCase {
 
@@ -27,19 +26,19 @@ class TurmaTest extends \PHPUnit_Framework_TestCase {
      * @param int $quantidadeDeVagasValida
      * @dataProvider quantidadeVagasValidas
      */
-    public function __construct_deveConstruirComQuantidadeDeVagasValidas($quantidadeDeVagasValida) {
+    public function __construct_deveConstruirComQuantidadeDeVagasValida($quantidadeDeVagasValida) {
         $turma = new Turma($quantidadeDeVagasValida);
         Assert\that($turma->getVagas())->eq($quantidadeDeVagasValida);
     }
 
     /**
      * @test
-     * @param int $quantidadeDeVagasValida
+     * @param int $quantidadeDeVagasInvalida
      * @dataProvider quantidadeVagasInvalidas
      * @expectedException InvalidArgumentException
      */
-    public function __construct_naoDeveConstruirComQuantidadeDeVagasValidas($quantidadeDeVagasValida) {
-        $turma = new Turma($quantidadeDeVagasValida);
+    public function __construct_naoDeveConstruirComQuantidadeDeVagasInvalida($quantidadeDeVagasInvalida) {
+        $turma = new Turma($quantidadeDeVagasInvalida);
     }
 
     /**
@@ -75,9 +74,9 @@ class TurmaTest extends \PHPUnit_Framework_TestCase {
      * @expectedException Application\Model\Entidade\Exception\TurmaSemVagaException
      */
     public function adicionarAluno_naoDevePermitirAdicionarAlunoSeNaoTiverVagas() {
-        $aluno = Phockito::mock('Application\Model\Entidade\Aluno');
+        $aluno = new Aluno();
         $turmaSemVagas = new Turma(0);
-
+        
         $turmaSemVagas->addAluno($aluno);
     }
 

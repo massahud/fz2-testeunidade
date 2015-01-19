@@ -54,7 +54,7 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
      * @test
      * @dataProvider numerosProvider
      */
-    public function tecla_deveMostrarNumeroTeclado($numero) {
+    public function teclaDeveMostrarNumeroTeclado($numero) {
         $this->calculadora->tecla($numero);
         Assert\that($this->calculadora->getDisplay())->eq($numero);
     }
@@ -63,14 +63,14 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
      * @test
      * @dataProvider teclasValidasProvider
      */
-    public function tecla_deveRetornarAPropriaCalculadora($tecla) {
+    public function teclaDeveRetornarAPropriaCalculadora($tecla) {
         Assert\that($this->calculadora->tecla($tecla))->same($this->calculadora);
     }
     
     /**
      * @test
      */
-    public function tecla_deveFazerAppendDeNumerosConsecutivos() {
+    public function teclaDeveFazerAppendDeNumerosConsecutivos() {
         $this->calculadora->tecla(2)->tecla(4)->tecla(1);
         Assert\that($this->calculadora->getDisplay())->eq('241');
     }
@@ -78,8 +78,9 @@ class CalculadoraTest extends PHPUnit_Framework_TestCase {
     /**
      * @test
      * @dataProvider operacoesProvider
+     * @covers Calc\Model\Calculadora::tecla
      */
-    public function tecla_primeiraOperacaoDeveColocarValorAtualEAPropriaOperacaoNoRegistrador($operacao) {
+    public function teclaPrimeiraOperacaoDeveColocarValorAtualEAPropriaOperacaoNoRegistrador($operacao) {
         $this->calculadora->tecla(4)->tecla(0)->tecla(7);
         $this->calculadora->tecla($operacao);        
         Assert\that($this->calculadora->getRegistrador()[0])->eq(407);

@@ -7,13 +7,7 @@ use Calc\Model\HelloWorld;
  * @author massahud
  */
 class HelloWordTest extends PHPUnit_Framework_TestCase {
-
-    /**
-     * @test
-     */
-    public function asd() {       
-        Assert\that(true)->true();
-    }
+    
     
     /**
      * @test

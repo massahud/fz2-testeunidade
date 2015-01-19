@@ -2,11 +2,20 @@
 
 <phpunit bootstrap="Bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="calc-testes">
-            <directory>./Calc/test/Calc</directory>
-        </testsuite>
+        
         <testsuite name="application-testes">
-            <directory>./Application/test/Application</directory>
+            <directory>./Application/test</directory>
         </testsuite>
-    </testsuites>
+        <testsuite name="calc-testes">
+            <directory>./Calc/test</directory>
+        </testsuite>
+        <testsuite name="forum-testes">
+            <directory>./Forum/test</directory>
+        </testsuite>
+    </testsuites>    
+    <filter>
+        <blacklist>
+            <directory suffix=".php">../vendor</directory>
+        </blacklist>
+    </filter>
 </phpunit>
