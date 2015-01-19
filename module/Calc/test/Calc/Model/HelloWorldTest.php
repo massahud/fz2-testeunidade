@@ -11,6 +11,13 @@ class HelloWordTest extends PHPUnit_Framework_TestCase {
     /**
      * @test
      */
+    public function asd() {       
+        Assert\that(true)->true();
+    }
+    
+    /**
+     * @test
+     */
     public function greet_deveUsarWordQuandoParametroForNull() {
         // setup
         $out = new SplFileObject("php://memory", "r+");

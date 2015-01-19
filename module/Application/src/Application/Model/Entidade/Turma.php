@@ -13,6 +13,12 @@ class Turma {
     private $vagas;
     
     /**
+     *
+     * @var array
+     */
+    private $alunos = array();
+    
+    /**
      * 
      * @param int $vagas
      * @throws \InvalidArgumentException se vagas não for 'int' e maior ou igual a 0
@@ -31,5 +37,15 @@ class Turma {
         return $this->vagas;
     }
 
+    public function addAluno($aluno) {
+        if ($this->getVagas() == 0) {
+            throw new Exception\TurmaSemVagaException();
+        }
+        array_push($this->alunos, $aluno);
+    }
+
+    public function getAlunos() {
+        return $this->alunos;
+    }
 
 }
