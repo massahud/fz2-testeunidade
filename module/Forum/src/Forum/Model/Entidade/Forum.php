@@ -33,5 +33,6 @@ class Forum {
     public function getTopicos() {
         return $this->topicos;
     }
+    
 
 }
