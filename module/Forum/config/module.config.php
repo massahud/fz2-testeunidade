@@ -26,14 +26,14 @@ return array(
                             'route' => '/:forumId',
                             'constraints' => array(
                                 'forumId' => '[0-9]+',
-                            ),
+                            ),                            
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Forum\Controller',
                                 'controller' => 'Forum',
                                 'action' => 'topicos',
                             ),
                         ),
-                        'may_terminate' => false,
+                        'may_terminate' => true,
                         'child_routes' => array(
                             'topicos' => array(
                                 'type' => 'Segment',

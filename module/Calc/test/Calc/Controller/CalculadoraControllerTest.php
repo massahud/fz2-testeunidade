@@ -44,7 +44,7 @@ class CalculadoraControllerTest extends PHPUnit_Framework_TestCase {
     public function __construct_deveInserirNovaCalculadoraNoContainerSeNaoPossuirUma() {
         $this->container->calculadora = NULL;
         $controller = new CalculadoraController($this->container);
-        Assert\that($this->container->calculadora)->notNull()->notSame($this->calculadora)->same($controller->getCalculadora());
+        Assert\that($this->container->calculadora)->same($controller->getCalculadora());
     }
     
     /**
@@ -56,5 +56,4 @@ class CalculadoraControllerTest extends PHPUnit_Framework_TestCase {
         $controller = new CalculadoraController($this->container);
         $controller->teclaAction();
     }
-    
 }

@@ -35,7 +35,8 @@ class Bootstrap
             ),
             'modules' => array(
                 'Application',
-                'Calc'
+                'Calc',
+                'Forum'
             )
         );
 
