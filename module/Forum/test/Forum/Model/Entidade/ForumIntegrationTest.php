@@ -1,5 +1,7 @@
 <?php
 
+use Forum\Model\Entidade\Forum;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,10 +17,13 @@
  */
 class ForumIntegrationTest extends PHPUnit_Framework_TestCase {
 
+    /**
+     *
+     * @var Doctrine\ORM\EntityManager 
+     */
     protected $em;
-
-    public function __construct($name = null, array $data = array(), $dataName = '') {
-        parent::__construct($name, $data, $dataName);
+    
+    public function setUp() {
         $this->em = Bootstrap::getEntityManager();
     }
 
@@ -28,13 +33,20 @@ class ForumIntegrationTest extends PHPUnit_Framework_TestCase {
      */
     public function podeSerConstruidoSemNome() {
 
-        $forum = new \Forum\Model\Entidade\Forum();
+        $forum = new Forum();        
         $forum->setNome('Nome do forum');
-
+        $forum2 = new Forum('outro nome');
+        
+        
+        $this->em->persist($forum2);
+        $this->em->getUnitOfWork()->clear();
         $this->em->persist($forum);
         $this->em->flush();
+        
 
-        print 'id ' . $forum->getId() . "\n";
+        print $forum->getId();
+        Assert\that($forum->getId())->notNull();
+        Assert\that($forum2->getId())->eq(NULL);
     }
 
 }
