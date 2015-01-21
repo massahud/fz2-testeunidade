@@ -31,7 +31,29 @@ class ForumIntegrationTest extends PHPUnit_Framework_TestCase {
      * @test
      * @medium
      */
-    public function podeSerConstruidoSemNome() {
+    public function deveReceberIdNoFlush() {
+
+        $forum = new Forum();        
+        $forum->setNome('Nome do forum');
+        $forum2 = new Forum('outro nome');
+        
+        
+        $this->em->persist($forum2);
+        $this->em->getUnitOfWork()->clear();
+        $this->em->persist($forum);
+        $this->em->flush();
+        
+
+        print $forum->getId();
+        Assert\that($forum->getId())->notNull();
+        Assert\that($forum2->getId())->eq(NULL);
+    }
+    
+    /**
+     * @test
+     * @medium
+     */
+    public function deveReceberIdNoFlush2() {
 
         $forum = new Forum();        
         $forum->setNome('Nome do forum');
