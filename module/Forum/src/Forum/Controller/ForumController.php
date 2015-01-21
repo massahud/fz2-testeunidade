@@ -9,23 +9,24 @@ use Zend\Json\Json;
 class ForumController extends AbstractActionController {
 
     public function indexAction() {
+                       
         return new ViewModel();
     }
 
     public function topicoAction() {
         $topico = array(
-            'forumId'=> $this->params('forumId'),
-            'topicoId'=> $this->params('topicoId'),
+            'forumId' => $this->params('forumId'),
+            'topicoId' => $this->params('topicoId'),
             'titulo' => 'titulo do topico',
             'mensagens' => array(
                 ['usuario' => 'nome do usuario',
-                'texto' => 'texto da mensagem'],
+                    'texto' => 'texto da mensagem'],
                 ['usuario' => 'nome do usuario',
-                'texto' => 'texto da mensagem'],
+                    'texto' => 'texto da mensagem'],
                 ['usuario' => 'nome do usuario',
-                'texto' => 'texto da mensagem'],
+                    'texto' => 'texto da mensagem'],
                 ['usuario' => 'nome do usuario',
-                'texto' => 'texto da mensagem']
+                    'texto' => 'texto da mensagem']
             )
         );
         if (!$this->getRequest()->isXmlHttpRequest()) {
@@ -38,7 +39,7 @@ class ForumController extends AbstractActionController {
             return $this->getResponse()->setContent(Json::encode($data));
         }
 
-   
+
         return $topico;
     }
 

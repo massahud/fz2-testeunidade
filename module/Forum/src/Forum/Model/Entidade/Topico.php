@@ -2,45 +2,62 @@
 
 namespace Forum\Model\Entidade;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Um forum é um conjunto de posts
- *
+ * @ORM\Entity
  * @author massahud
  */
 class Topico {
 
     /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     * @var integer
+     */
+    private $id;
+
+    /**
      *
      * @var Forum
+     * @ORM\ManyToOne(targetEntity="Forum", inversedBy="topicos")
      */
     private $forum;
 
     /**
      *
      * @var string 
+     * @ORM\Column(type="string")
      */
     private $usuario;
 
     /**
      *
      * @var string 
+     * @ORM\Column(type="string")
      */
     private $titulo;
 
     /**
      *
      * @var string 
+     * @ORM\Column(type="string", length=4000)
      */
     private $texto;
 
     /**
      *
      * @var array Forum\Model\Entidade\Comentario
+     * @ORM\OneToMany(mappedBy="topico", targetEntity="Comentario")
      */
     private $comentarios = array();
+
     /**
      *
      * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     private $dataCriacao;
 

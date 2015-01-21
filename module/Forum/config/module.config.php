@@ -12,7 +12,7 @@ return array(
                 'drivers' => array(
                     'Forum\Model\Entidade' => 'forum_entities'
                 )
-            )
+            ),            
         )
     ),
     'controllers' => array(

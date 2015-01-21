@@ -4,13 +4,13 @@
     <testsuites>
         
         <testsuite name="application-testes">
-            <directory>./Application/test</directory>
+            <directory>./module/Application/test</directory>
         </testsuite>
         <testsuite name="calc-testes">
-            <directory>./Calc/test</directory>
+            <directory>./module/Calc/test</directory>
         </testsuite>
         <testsuite name="forum-testes">
-            <directory>./Forum/test</directory>
+            <directory>./module/Forum/test</directory>
         </testsuite>
     </testsuites>    
     <filter>

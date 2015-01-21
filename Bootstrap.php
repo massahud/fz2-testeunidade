@@ -1,11 +1,8 @@
 <?php
 
-namespace Calc;
-
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
-use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
@@ -13,27 +10,36 @@ chdir(__DIR__);
 /**
  * Test bootstrap, for setting up autoloading
  */
-class Bootstrap
-{
-    protected static $serviceManager;
+class Bootstrap {
 
-    public static function init()
-    {
-        $zf2ModulePaths = array(dirname(dirname(__DIR__)));
+    protected static $serviceManager;
+    protected static $entityPaths = array();    
+    protected static $dropCreateSchemaExecutado = false;
+
+    public static function init() {
+
+        $zf2ModulePaths = array(__DIR__);
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
         }
         if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
             $zf2ModulePaths[] = $path;
-        }       
-        static::initAutoloader();
+        }
 
+        static::$entityPaths[] = static::findParentPath('module') . '/Forum/src/Forum/Model/Entidade';
+//        print static::findParentPath('test').'/autoload/doctrine.local.php';
+        static::initAutoloader();
         // use ModuleManager to load this module and it's dependencies
         $config = array(
             'module_listener_options' => array(
                 'module_paths' => $zf2ModulePaths,
+                'config_glob_paths' => array(
+                    'test-config/autoload/{,*.}{global,local}.php'
+                ),
             ),
             'modules' => array(
+                'DoctrineModule',
+                'DoctrineORMModule',
                 'Application',
                 'Calc',
                 'Forum'
@@ -43,24 +49,38 @@ class Bootstrap
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
         $serviceManager->get('ModuleManager')->loadModules();
-        static::$serviceManager = $serviceManager;
+        static::$serviceManager = $serviceManager;                
     }
 
-    public static function chroot()
-    {
-        $rootPath = dirname(static::findParentPath('module'));        
+    public static function dropCreateSchema($em) {                
+        $metadatas = $em->getMetadataFactory()->getAllMetadata();
+        $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($em);
+        $schemaTool->dropSchema($metadatas);
+        $schemaTool->createSchema($metadatas);
+    }
+
+    public static function getEntityManager() {
+        $em = static::getServiceManager()->get('Doctrine\ORM\EntityManager');
+        if (!static::$dropCreateSchemaExecutado) {
+            static::dropCreateSchema($em);
+            static::$dropCreateSchemaExecutado = true;
+        }
+        return $em;
+    }
+
+    public static function chroot() {
+        $rootPath = dirname(static::findParentPath('module'));
+        print 'ROOT ' . $rootPath . "\n";
         chdir($rootPath);
     }
 
-    public static function getServiceManager()
-    {
+    public static function getServiceManager() {
         return static::$serviceManager;
     }
 
-    protected static function initAutoloader()
-    {
-        $vendorPath = static::findParentPath('vendor');        
-        
+    protected static function initAutoloader() {
+        $vendorPath = static::findParentPath('vendor');
+
         $zf2Path = getenv('ZF2_PATH');
         if (!$zf2Path) {
             if (defined('ZF2_PATH')) {
@@ -74,16 +94,16 @@ class Bootstrap
 
         if (!$zf2Path) {
             throw new RuntimeException(
-                'Unable to load ZF2. Run `php composer.phar install` or'
-                . ' define a ZF2_PATH environment variable.'
+            'Unable to load ZF2. Run `php composer.phar install` or'
+            . ' define a ZF2_PATH environment variable.'
             );
-        }        
+        }
 
         if (file_exists($vendorPath . '/autoload.php')) {
             include $vendorPath . '/autoload.php';
         }
-        
-        set_include_path(implode(PATH_SEPARATOR, array(    
+
+        set_include_path(implode(PATH_SEPARATOR, array(
             $vendorPath . '/hamcrest/hamcrest-php/hamcrest',
             get_include_path()
         )));
@@ -101,8 +121,7 @@ class Bootstrap
         ));
     }
 
-    protected static function findParentPath($path)
-    {
+    protected static function findParentPath($path) {
         $dir = __DIR__;
         $previousDir = '.';
         while (!is_dir($dir . '/' . $path)) {
@@ -114,7 +133,9 @@ class Bootstrap
         }
         return $dir . '/' . $path;
     }
+
 }
+
 
 Bootstrap::init();
 Bootstrap::chroot();

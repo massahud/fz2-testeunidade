@@ -2,17 +2,29 @@
 
 namespace Forum\Model\Entidade;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Um forum é um conjunto de posts
  *
+ * @ORM\Entity
  * @author massahud
  */
 class Comentario {
 
     /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     * @var integer
+     */
+    private $id;
+
+    /**
      * Topico do comentário
      * 
-     * @var Topico
+     * @var Topico     
+     * @ORM\ManyToOne(targetEntity="Topico", inversedBy="comentarios")
      */
     private $topico;
 
@@ -20,18 +32,22 @@ class Comentario {
      * Usuário que criou a mensagem
      * 
      * @var string 
-     */
+     * @ORM\Column(type="string")
+     */    
     private $usuario;
 
     /**
      * Texto da mensagem
      * 
      * @var string 
+     * @ORM\Column(type="string", length=4000)
      */
     private $texto;
+
     /**
      *
      * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     private $dataCriacao;
 
@@ -45,11 +61,16 @@ class Comentario {
         $this->usuario = $usuario;
         $this->texto = $texto;
     }
+    
+    function getId() {
+        return $this->id;
+    }
 
+    
     public function getTopico() {
         return $this->topico;
     }
-    
+
     public function setTopico($topico) {
         $this->topico = $topico;
     }
@@ -76,7 +97,5 @@ class Comentario {
     public function getDataCriacao() {
         return $this->dataCriacao;
     }
-
-    
 
 }
