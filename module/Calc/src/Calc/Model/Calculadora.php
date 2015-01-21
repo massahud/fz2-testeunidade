@@ -38,8 +38,7 @@ class Calculadora {
             $this->display .= $tecla;
         } else if (in_array($tecla, self::OPERACOES)) {            
             array_push($this->registrador, $this->display);
-            array_push($this->registrador, $tecla);
-            print $this->registrador[0];
+            array_push($this->registrador, $tecla);            
         }
         return $this;
     }

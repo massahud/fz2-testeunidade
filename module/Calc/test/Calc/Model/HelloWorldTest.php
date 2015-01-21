@@ -3,7 +3,8 @@
 use Calc\Model\HelloWorld;
 /**
  * Description of HelloWorldTest
- *
+ * @group unidade
+ * @small
  * @author massahud
  */
 class HelloWordTest extends PHPUnit_Framework_TestCase {

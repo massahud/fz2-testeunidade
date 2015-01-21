@@ -4,13 +4,13 @@ use Calc\Model\HelloWorld;
 /**
  * Description of HelloWorldTest
  *
+ * 
+ * @group unidade
+ * @small
  * @author massahud
  */
 class DependeTest extends PHPUnit_Framework_TestCase {
 
-    
-    
-    
     
     /**
      * @test
@@ -42,6 +42,11 @@ class DependeTest extends PHPUnit_Framework_TestCase {
         Assert\that(2)->min(0);        
     }
     
+    /**
+     * Método que cria dados para serem usados em testes
+     * 
+     * @return array de inteiros positivos
+     */
     public function valoresPositivos() {
         return [
             [0], // limite inferior
@@ -52,10 +57,12 @@ class DependeTest extends PHPUnit_Framework_TestCase {
     }
     
     /**
+     * teste para exemplificar dataProvider
      * @test
      * @dataProvider valoresPositivos
      */
-    public function deveAceitarValoresPositivos($valor) {        
-        print $valor;
+    public function deveAceitarValoresPositivos($valor) {
+        Assert\that($valor)->min(0);
+        verify($valor)->greaterOrEquals(0);
     }
 }

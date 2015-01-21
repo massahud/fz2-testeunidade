@@ -1,6 +1,20 @@
 <?php
 
 return array(
+    'doctrine' => array(
+        'driver' => array(
+            'forum_entities' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Forum/Model/Entidade')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'Forum\Model\Entidade' => 'forum_entities'
+                )
+            )
+        )
+    ),
     'controllers' => array(
         'invokables' => array(
             'Forum\Controller\Forum' => 'Forum\Controller\ForumController'
@@ -26,7 +40,7 @@ return array(
                             'route' => '/:forumId',
                             'constraints' => array(
                                 'forumId' => '[0-9]+',
-                            ),                            
+                            ),
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Forum\Controller',
                                 'controller' => 'Forum',

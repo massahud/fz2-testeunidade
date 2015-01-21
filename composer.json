@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.*",
-        "doctrine/orm": "2.4.7"
+        "doctrine/doctrine-orm-module": "0.8.*"
     },
     "require-dev": {
         "zendframework/zftool": "dev-master",
@@ -20,6 +20,6 @@
         "phpunit/phpunit": "dev-master",
         "phpunit/dbunit": ">=1.2",
         "beberlei/assert": "2.3.*@dev",
-        "codeception/verify": "*"        
+        "codeception/verify": "*"
     }
 }

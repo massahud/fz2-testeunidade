@@ -6,6 +6,8 @@ use Forum\Model\Entidade\Forum;
 /**
  * Description of ForumTest
  *
+ * @group unidade
+ * @small
  * @author massahud
  */
 class TopicoTest extends PHPUnit_Framework_TestCase {

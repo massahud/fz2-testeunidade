@@ -3,6 +3,10 @@
 use Application\Model\Entidade\Turma;
 use Application\Model\Entidade\Aluno;
 
+/**
+ * @group unidade
+ * @small
+ */
 class TurmaTest extends \PHPUnit_Framework_TestCase {
 
     public function quantidadeVagasValidas() {

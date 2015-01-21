@@ -49,6 +49,10 @@ class Comentario {
     public function getTopico() {
         return $this->topico;
     }
+    
+    public function setTopico($topico) {
+        $this->topico = $topico;
+    }
 
     public function getUsuario() {
         return $this->usuario;
@@ -72,5 +76,7 @@ class Comentario {
     public function getDataCriacao() {
         return $this->dataCriacao;
     }
+
+    
 
 }

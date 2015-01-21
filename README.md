@@ -84,6 +84,10 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
     ```
 3. Inicie o apache e acesse http://localhost/tu para verificar se a aplicação está funcionando corretamente
 
+### MySQL ###
+Crie o usuário `forum` com permissão de login em `localhost` senha `senha_forum` e o database `forum`.
+Se não quiser criar este usuário desta forma, edite `config/autoload/doctrine.local.php` com os dados de conexão que utilizar.
+
 ### Testes javascript no netbeans ###
 
 1. Clique com o botão direito no projeto
