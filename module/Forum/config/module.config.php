@@ -16,9 +16,14 @@ return array(
         )
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Forum\Controller\Forum' => 'Forum\Controller\ForumController'
+        'factories' => array(
+            'Forum\Controller\Forum' => 'Forum\Factory\ForumControllerFactory'
         ),
+    ),
+    'service_manager' => array(
+        'invokables' => array (
+            'Forum\Service\ForumService' => 'Forum\Service\ForumService'
+        )
     ),
     'router' => array(
         'routes' => array(

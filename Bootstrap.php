@@ -52,7 +52,7 @@ class Bootstrap {
         static::$serviceManager = $serviceManager;                
     }
 
-    public static function dropCreateSchema($em) {                
+    public static function dropCreateSchema($em) {
         $metadatas = $em->getMetadataFactory()->getAllMetadata();
         $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($em);
         $schemaTool->dropSchema($metadatas);

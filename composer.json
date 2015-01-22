@@ -20,6 +20,7 @@
         "phpunit/phpunit": "dev-master",
         "phpunit/dbunit": ">=1.2",
         "beberlei/assert": "2.3.*@dev",
-        "codeception/verify": "*"
+        "codeception/verify": "*",
+        "doctrine/data-fixtures": "1.0.*"
     }
 }

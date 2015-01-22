@@ -2,15 +2,22 @@
 
 namespace Forum\Controller;
 
+use Forum\Service\ForumService;
+use Zend\Json\Json;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\Json\Json;
 
 class ForumController extends AbstractActionController {
+    
+    private $forumService;
+    
+    public function __construct(ForumService $forumService) {
+        $this->forumService = $forumService;
+    }
 
     public function indexAction() {
-                       
-        return new ViewModel();
+        $forums = $this->forumService->listar();        
+        return array('forums'=>$forums);
     }
 
     public function topicoAction() {
@@ -29,7 +36,7 @@ class ForumController extends AbstractActionController {
                     'texto' => 'texto da mensagem']
             )
         );
-        if (!$this->getRequest()->isXmlHttpRequest()) {
+        if ($this->getRequest()->isXmlHttpRequest()) {
             $data = array(
                 'result' => true,
                 'controller' => 'Forum',
