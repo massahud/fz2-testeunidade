@@ -21,8 +21,8 @@ return array(
         ),
     ),
     'service_manager' => array(
-        'invokables' => array (
-            'Forum\Service\ForumService' => 'Forum\Service\ForumService'
+        'factories' => array (
+            'Forum\Service\ForumService' => 'Forum\Factory\ForumServiceFactory'
         )
     ),
     'router' => array(

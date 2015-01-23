@@ -1,1 +1,10 @@
-Action "index", controller "Forum", module "Forum".
+<div id='foruns'>
+
+    <ul>
+        <?php
+        foreach ($this->foruns as $forum) {
+            echo "<li>" . $forum->getNome() . "</li>";
+        }
+        ?>
+
+</div>

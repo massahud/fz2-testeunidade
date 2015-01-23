@@ -44,7 +44,7 @@ class ForumTest extends PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function deveIniciarSemTopicos() {
+    public function deveSerConstruidoSemTopicos() {
         $forum = new Forum();
 
         Assert\that($forum->getTopicos())->notNull()->count(0);

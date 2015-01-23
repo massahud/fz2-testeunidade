@@ -34,7 +34,6 @@ class ForumService {
 
     public function find($id) {
         return $this->em->find('Forum\Model\Entidade\Forum', $id);
-        
     }
 
 }

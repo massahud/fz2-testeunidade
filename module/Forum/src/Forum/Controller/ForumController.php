@@ -16,8 +16,8 @@ class ForumController extends AbstractActionController {
     }
 
     public function indexAction() {
-        $forums = $this->forumService->listar();        
-        return array('forums'=>$forums);
+        $foruns = $this->forumService->listar();
+        return array('foruns'=>$foruns);
     }
 
     public function topicoAction() {

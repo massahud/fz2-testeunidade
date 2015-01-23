@@ -38,7 +38,7 @@ class CalculadoraControllerTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function __construct_deveRestaurarCalculadoraDoContainer() {        
-        Assert\that($this->calculadoraController->getCalculadora())->same($this->calculadora);
+        self::assertSame($this->calculadora, $this->calculadoraController->getCalculadora());
     }
         
     /**
@@ -47,7 +47,7 @@ class CalculadoraControllerTest extends PHPUnit_Framework_TestCase {
     public function __construct_deveInserirNovaCalculadoraNoContainerSeNaoPossuirUma() {
         $this->container->calculadora = NULL;
         $controller = new CalculadoraController($this->container);
-        Assert\that($this->container->calculadora)->same($controller->getCalculadora());
+        self::assertSame($this->calculadora, $this->container->calculadoraController->getCalculadora());        
     }
     
     /**

@@ -40,7 +40,7 @@ class ForumServiceIntegrationTest extends PHPUnit_Framework_TestCase {
         $this->em = Bootstrap::getEntityManager();
         // carrega fixtures
         $loader = new Loader();
-        $loader->loadFromDirectory(__DIR__.'/../../Fixtures/Simples');        
+        $loader->loadFromDirectory(__DIR__.'/../Fixtures/Simples');        
         $fixtures = $loader->getFixtures();        
 
         // limpa e insere fixtures no banco
@@ -54,8 +54,9 @@ class ForumServiceIntegrationTest extends PHPUnit_Framework_TestCase {
 
     /**
      * @test
+     * @medium
      */
-    public function deveListarOsForums() {
+    public function deveListarOsForuns() {
         
         $comunidade = $this->repo->getReference(LoadForumData::FORUM_COMUNIDADE);
         $duvidas = $this->repo->getReference(LoadForumData::FORUM_DUVIDAS);
@@ -63,16 +64,17 @@ class ForumServiceIntegrationTest extends PHPUnit_Framework_TestCase {
         
         $forumService = new ForumService($this->em);
 
-        $forums = $forumService->listar();
+        $foruns = $forumService->listar();
                 
-        Assert\that($forums)->isArray()->count(3);
-        Assert\that($comunidade)->inArray($forums);
-        Assert\that($duvidas)->inArray($forums);
-        Assert\that($semTopicos)->inArray($forums);        
+        Assert\that($foruns)->isArray()->count(3);
+        Assert\that($comunidade)->inArray($foruns);
+        Assert\that($duvidas)->inArray($foruns);
+        Assert\that($semTopicos)->inArray($foruns);        
     }
     
     /**
      * @test
+     * @medium
      */
     public function deveObterForumPorId() {
         $duvidas = $this->repo->getReference(LoadForumData::FORUM_DUVIDAS);
