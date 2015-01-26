@@ -67,7 +67,7 @@ O composer irá fazer download das bibliotecas php utilizadas no projeto
 ### Apache ###
 Configure o diretório da aplicação no apache editando o arquivo httpd.conf da seguinte forma:
 
-1. Adicione o diretório zf2-testeunidade
+Adicione o diretório zf2-testeunidade   
 ```xml
   <Directory "m:/zf2-testeunidade">
     Options Indexes FollowSymLinks Includes ExecCGI
@@ -75,14 +75,16 @@ Configure o diretório da aplicação no apache editando o arquivo httpd.conf da
     Require all granted
   </Directory>
 ```
-2. Adicione o alias /tu para o diretório dentro do bloco **IfModule alias_module**
+
+Adicione o alias /tu para o diretório dentro do bloco **IfModule alias_module**   
 ```xml
   <IfModule alias_module>
     Alias /tu m:/zf2-testeunidade/public
     [...]
   </IfModule>
 ```
-3. Inicie o apache e acesse http://localhost/tu para verificar se a aplicação está funcionando corretamente
+
+Inicie o apache e acesse http://localhost/tu para verificar se a aplicação está funcionando corretamente
 
 ### MySQL ###
 Crie o usuário `forum` com permissão de login em `localhost` senha `senha_forum` e o database `forum`.
