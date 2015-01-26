@@ -68,20 +68,20 @@ O composer irá fazer download das bibliotecas php utilizadas no projeto
 Configure o diretório da aplicação no apache editando o arquivo httpd.conf da seguinte forma:
 
 1. Adicione o diretório zf2-testeunidade
-    ```xml
-    <Directory "m:/zf2-testeunidade">
-      Options Indexes FollowSymLinks Includes ExecCGI
-      AllowOverride All
-      Require all granted
-    </Directory>
-    ```
+```xml
+  <Directory "m:/zf2-testeunidade">
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Require all granted
+  </Directory>
+```
 2. Adicione o alias /tu para o diretório dentro do bloco **IfModule alias_module**
-    ```xml
-      <IfModule alias_module>
-        Alias /tu m:/zf2-testeunidade/public
-        [...]
-      </IfModule>
-    ```
+```xml
+  <IfModule alias_module>
+    Alias /tu m:/zf2-testeunidade/public
+    [...]
+  </IfModule>
+```
 3. Inicie o apache e acesse http://localhost/tu para verificar se a aplicação está funcionando corretamente
 
 ### MySQL ###
@@ -104,13 +104,13 @@ Se não quiser criar este usuário desta forma, edite `config/autoload/doctrine.
 12. Se aparecer uma mensagem de erro informando que um administrador instalou o chrome no sistema, significa que você possui um chrome local além do instalado pelo administrador, e o karma está abrindo primeiro o chrome local. Para resolver isso, siga os seguintes passos:
   1. Abra o arquivo ***node_modules\karma-chrome-launcher\index.js*** que está dentro do diretório de instalação do node.js.
   2. Procure pela linha
-    ```javascript
-    var prefixes = [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];
-    ```
+```javascript
+  var prefixes = [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];
+```
   3. Coloque o primeiro item no final:
-    ```javascript
-    var prefixes = [process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)'], process.env.LOCALAPPDATA];
-    ```
+```javascript
+  var prefixes = [process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)'], process.env.LOCALAPPDATA];
+```
   4. Salve o arquivo
   5.  Clique com o botão direito novamente em **Karma** no netbeans e escolha **Restart**
   6. Dessa vez os testes devem executar
