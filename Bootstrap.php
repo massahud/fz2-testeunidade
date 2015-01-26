@@ -13,7 +13,7 @@ chdir(__DIR__);
 class Bootstrap {
 
     protected static $serviceManager;
-    protected static $entityPaths = array();    
+    protected static $entityPaths = array();
     protected static $dropCreateSchemaExecutado = false;
 
     public static function init() {
@@ -46,10 +46,11 @@ class Bootstrap {
             )
         );
 
+
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
         $serviceManager->get('ModuleManager')->loadModules();
-        static::$serviceManager = $serviceManager;                
+        static::$serviceManager = $serviceManager;
     }
 
     public static function dropCreateSchema($em) {
@@ -103,12 +104,7 @@ class Bootstrap {
             include $vendorPath . '/autoload.php';
         }
 
-        set_include_path(implode(PATH_SEPARATOR, array(
-            $vendorPath . '/hamcrest/hamcrest-php/hamcrest',
-            get_include_path()
-        )));
 
-        require_once 'Hamcrest.php';
 
         include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
         AutoloaderFactory::factory(array(
@@ -119,6 +115,12 @@ class Bootstrap {
                 )
             ),
         ));
+        set_include_path(implode(PATH_SEPARATOR, array(
+            $vendorPath . '/hamcrest/hamcrest-php/hamcrest',
+            get_include_path()
+        )));
+
+        require_once 'Hamcrest.php';
     }
 
     protected static function findParentPath($path) {
@@ -136,6 +138,15 @@ class Bootstrap {
 
 }
 
-
 Bootstrap::init();
 Bootstrap::chroot();
+
+/**
+ * Como várias dependencias possuem a função anything(), esta é a que o phockito
+ * entende
+ */
+function qualquerCoisa($description = 'ANYTHING') {
+
+    require_once 'Hamcrest/Core/IsAnything.php';
+    return Hamcrest_Core_IsAnything::anything($description);
+}

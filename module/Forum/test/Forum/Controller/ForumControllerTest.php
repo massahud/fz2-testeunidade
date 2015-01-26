@@ -16,6 +16,16 @@ use Forum\Model\Entidade\Forum;
  */
 class ForumControllerTest extends PHPUnit_Framework_TestCase {
     
+    
+    /**
+     * @test
+     * @expectedException PHPUnit_Framework_Error
+     * @expectedExceptionMessage Argument 1 passed to Forum\Controller\ForumController::__construct() must be an instance of Forum\Service\ForumService
+     */
+    public function naoDeveAceitarServiceNulo() {
+        new ForumController(null);
+    }
+    
     /**
      * @test
      */

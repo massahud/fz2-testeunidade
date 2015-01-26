@@ -18,18 +18,19 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @author massahud
  */
 class ForumControllerFactory implements FactoryInterface {
-    /**
-      * Create service
-      *
-      * @param ServiceLocatorInterface $serviceLocator
-      *
-      * @return mixed
-      */
-     public function createService(ServiceLocatorInterface $serviceLocator)
-     {
-        $realServiceLocator = $serviceLocator->getServiceLocator();
-         $forumService        = $realServiceLocator->get('Forum\Service\ForumService');
 
-         return new ForumController($forumService);
-     }
+    /**
+     * Create service
+     *
+     * @param ServiceLocatorInterface $serviceLocator
+     *
+     * @return mixed
+     */
+    public function createService(ServiceLocatorInterface $serviceLocator) {
+        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $forumService = $realServiceLocator->get('Forum\Service\ForumService');
+
+        return new ForumController($forumService);
+    }
+
 }
