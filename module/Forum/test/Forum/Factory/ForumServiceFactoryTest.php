@@ -9,9 +9,7 @@ use Forum\Factory\ForumServiceFactory;
  * @author massahud
  */
 class ForumServiceFactoryTest extends PHPUnit_Framework_TestCase {
-    
-    const UM_ID = 123;
-    
+        
     /**
      * @test
      */

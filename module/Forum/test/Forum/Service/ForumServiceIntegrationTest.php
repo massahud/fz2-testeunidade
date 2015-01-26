@@ -66,10 +66,11 @@ class ForumServiceIntegrationTest extends PHPUnit_Framework_TestCase {
 
         $foruns = $forumService->listar();
                 
-        Assert\that($foruns)->isArray()->count(3);
-        Assert\that($comunidade)->inArray($foruns);
-        Assert\that($duvidas)->inArray($foruns);
-        Assert\that($semTopicos)->inArray($foruns);        
+        Assert\that($foruns)->isArray()->count(3);        
+        expect($foruns)->contains($comunidade);        
+        expect($foruns)->contains($duvidas);        
+        expect($foruns)->contains($semTopicos);        
+        
     }
     
     /**
@@ -82,7 +83,7 @@ class ForumServiceIntegrationTest extends PHPUnit_Framework_TestCase {
         
         $forum = $forumService->find($duvidas->getId());
         
-        Assert\that($forum)->eq($duvidas);
+        expect($forum)->equals($duvidas);
     }
 
 }
