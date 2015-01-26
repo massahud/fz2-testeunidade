@@ -27,7 +27,7 @@ class ForumControllerFactory implements FactoryInterface {
       */
      public function createService(ServiceLocatorInterface $serviceLocator)
      {
-         $realServiceLocator = $serviceLocator->getServiceLocator();
+        $realServiceLocator = $serviceLocator->getServiceLocator();
          $forumService        = $realServiceLocator->get('Forum\Service\ForumService');
 
          return new ForumController($forumService);

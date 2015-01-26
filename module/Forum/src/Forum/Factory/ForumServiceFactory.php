@@ -22,14 +22,14 @@ class ForumServiceFactory implements FactoryInterface {
     /**
       * Create service
       *
-      * @param ServiceLocatorInterface $serviceManager
+      * @param ServiceLocatorInterface $serviceLocator
       *
       * @return mixed
       */
-     public function createService(ServiceManager $serviceManager)
+     public function createService(ServiceLocatorInterface $serviceLocator)
      {
-         
-         $em = $serviceManager->get('Doctrine\ORM\EntityManager');
+//         $realServiceLocator = $serviceLocator->getServiceLocator();
+         $em = $serviceLocator->get('Doctrine\ORM\EntityManager');
 
          return new ForumService($em);
      }
