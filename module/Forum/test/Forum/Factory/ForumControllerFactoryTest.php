@@ -11,6 +11,7 @@ use Forum\Model\Entidade\Forum;
 class ForumControllerFactoryTest extends PHPUnit_Framework_TestCase {
 
     const UM_ID = 123;
+    
 
     /**
      * @test

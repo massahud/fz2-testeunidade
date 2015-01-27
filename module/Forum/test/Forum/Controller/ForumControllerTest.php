@@ -25,6 +25,7 @@ class ForumControllerTest extends PHPUnit_Framework_TestCase {
     public function naoDeveAceitarServiceNulo() {
         new ForumController(null);
     }
+        
     
     /**
      * @test
@@ -34,7 +35,8 @@ class ForumControllerTest extends PHPUnit_Framework_TestCase {
         $foruns = array(new Forum('FORUM 1'), new Forum('Fórum 2'));
         
         $service = Phockito::mock('Forum\Service\ForumService');
-        Phockito::when($service->listar())->return($foruns);
+        Phockito::when($service->listar())->return($foruns);        
+        
         
         $forumController = new ForumController($service);
         

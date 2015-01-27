@@ -1,6 +1,5 @@
 <?php
 
-use Hamcrest\Core\IsAnything;
 use Forum\Factory\ForumServiceFactory;
 
 /**
