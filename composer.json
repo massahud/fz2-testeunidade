@@ -14,12 +14,13 @@
     "require-dev": {
         "zendframework/zftool": "dev-master",
         "zendframework/zend-developer-tools": "dev-master",        
+        "phake/phake": "*",
         "hafriedlander/phockito": "dev-master",
         "sebastian/exporter": "1.2.*@dev",
         "phpunit/phpunit": "dev-master",
         "phpunit/dbunit": ">=1.2",
         "beberlei/assert": "2.3.*@dev",
         "codeception/verify": "*",
-        "doctrine/data-fixtures": "1.0.*"
+        "doctrine/data-fixtures": "1.0.*"        
     }
 }

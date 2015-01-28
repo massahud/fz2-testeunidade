@@ -15,9 +15,9 @@ class Bootstrap {
     protected static $serviceManager;
     protected static $entityPaths = array();
     protected static $dropCreateSchemaExecutado = false;
-
-    public static function init() {
-
+    
+    public static function getApplicationConfig() {
+        
         $zf2ModulePaths = array(__DIR__);
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
@@ -25,12 +25,7 @@ class Bootstrap {
         if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
             $zf2ModulePaths[] = $path;
         }
-
-        static::$entityPaths[] = static::findParentPath('module') . '/Forum/src/Forum/Model/Entidade';
-//        print static::findParentPath('test').'/autoload/doctrine.local.php';
-        static::initAutoloader();
-        // use ModuleManager to load this module and it's dependencies
-        $config = array(
+        return array(
             'module_listener_options' => array(
                 'module_paths' => $zf2ModulePaths,
                 'config_glob_paths' => array(
@@ -45,6 +40,17 @@ class Bootstrap {
                 'Forum'
             )
         );
+    }
+    
+    public static function init() {
+
+        
+
+        static::$entityPaths[] = static::findParentPath('module') . '/Forum/src/Forum/Model/Entidade';
+//        print static::findParentPath('test').'/autoload/doctrine.local.php';
+        static::initAutoloader();
+        // use ModuleManager to load this module and it's dependencies
+        $config = self::getApplicationConfig();
 
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
@@ -52,6 +58,7 @@ class Bootstrap {
         $serviceManager->get('ModuleManager')->loadModules();
         static::$serviceManager = $serviceManager;
     }
+        
 
     public static function dropCreateSchema($em) {
         $metadatas = $em->getMetadataFactory()->getAllMetadata();
@@ -69,10 +76,12 @@ class Bootstrap {
         return $em;
     }
 
-    public static function chroot() {
-        $rootPath = dirname(static::findParentPath('module'));
-        print 'ROOT ' . $rootPath . "\n";
-        chdir($rootPath);
+    public static function chroot() {        
+        chdir(self::getRootPath());
+    }
+    
+    public static function getRootPath() {
+        return dirname(static::findParentPath('module'));
     }
 
     public static function getServiceManager() {

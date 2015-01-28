@@ -53,18 +53,7 @@ return array(
                             ),
                         ),
                         'may_terminate' => true,
-                        'child_routes' => array(
-                            'topicos' => array(
-                                'type' => 'Segment',
-                                'options' => array(
-                                    'route' => '/topicos',
-                                    'defaults' => array(
-                                        '__NAMESPACE__' => 'Forum\Controller',
-                                        'controller' => 'Forum',
-                                        'action' => 'topicos',
-                                    ),
-                                )
-                            ),
+                        'child_routes' => array(                            
                             'topico' => array(
                                 'type' => 'Segment',
                                 'options' => array(
