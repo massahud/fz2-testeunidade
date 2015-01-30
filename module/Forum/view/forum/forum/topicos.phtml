@@ -1,3 +1,10 @@
-Module: Forum
-Controller: Forum
-Action: topicos
+<div id='topicos'>
+
+    <ul>
+        <?php
+        foreach ($this->topicos as $topico) {
+            echo "<li>" . $topico->getTitulo() . "</li>";
+        }
+        ?>
+
+</div>

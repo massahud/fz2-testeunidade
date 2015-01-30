@@ -16,7 +16,7 @@ class Bootstrap {
     protected static $entityPaths = array();
     protected static $dropCreateSchemaExecutado = false;
     
-    public static function getApplicationConfig() {
+    public static function getApplicationConfigSqliteMemoria() {
         
         $zf2ModulePaths = array(__DIR__);
         if (($path = static::findParentPath('vendor'))) {
@@ -29,7 +29,35 @@ class Bootstrap {
             'module_listener_options' => array(
                 'module_paths' => $zf2ModulePaths,
                 'config_glob_paths' => array(
-                    'test-config/autoload/{,*.}{global,local}.php'
+                    'test-config/autoload/{,*.}{global,local}.php',
+                    'test-config/sqlite.php'
+                ),
+            ),
+            'modules' => array(
+                'DoctrineModule',
+                'DoctrineORMModule',
+                'Application',
+                'Calc',
+                'Forum'
+            )
+        );
+    }
+    
+    public static function getApplicationConfigMySQLTestes() {
+        
+        $zf2ModulePaths = array(__DIR__);
+        if (($path = static::findParentPath('vendor'))) {
+            $zf2ModulePaths[] = $path;
+        }
+        if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
+            $zf2ModulePaths[] = $path;
+        }
+        return array(
+            'module_listener_options' => array(
+                'module_paths' => $zf2ModulePaths,
+                'config_glob_paths' => array(
+                    'test-config/autoload/{,*.}{global,local}.php',
+                    'test-config/mysql.php'
                 ),
             ),
             'modules' => array(
@@ -50,7 +78,7 @@ class Bootstrap {
 //        print static::findParentPath('test').'/autoload/doctrine.local.php';
         static::initAutoloader();
         // use ModuleManager to load this module and it's dependencies
-        $config = self::getApplicationConfig();
+        $config = self::getApplicationConfigSqliteMemoria();
 
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());

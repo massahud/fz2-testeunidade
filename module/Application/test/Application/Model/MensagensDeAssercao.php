@@ -5,7 +5,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+namespace Application\Model;
 
+use PHPUnit_Framework_TestCase;
+use function greaterThan;
+use \Assert;
 /**
  * Description of AssertionTest
  * 
@@ -15,7 +19,8 @@
 class AssertionTest extends PHPUnit_Framework_TestCase {
     
     public function setUp() {
-        self::markTestSkipped('teste criado apenas para exibir as mensagens de erro entre bibliotecas de asserções');
+        // COMENTE A LINHA ABAIXO PARA VER EXECUTAR
+//        self::markTestSkipped('teste criado apenas para exibir as mensagens de erro entre bibliotecas de asserções');
     }
     
     /**
@@ -24,6 +29,7 @@ class AssertionTest extends PHPUnit_Framework_TestCase {
     public function greaterThanSemMensagemPHPUnit() {
         self::assertGreaterThan(1, 0);
     }
+    
     
     /**
      * @test
@@ -43,22 +49,44 @@ class AssertionTest extends PHPUnit_Framework_TestCase {
     /**
      * @test
      */
+    public function greatherThanSemMensagemMatcherPHPUnit() {
+        $this->assertThat(0, $this->greaterThan(1));
+    }
+    
+    /**
+     * @test
+     */
+    public function greatherThanSemMensagemMatcherHamcrest() {
+        assertThat(0, greaterThan(1));
+    }
+    
+    /**
+     * @test
+     */
     public function greaterThanComMensagemPHPUnit() {
-        self::assertGreaterThan(1, 0, "meu número");
+        self::assertGreaterThan(1, 0, "mensagem");
     }
     
     /**
      * @test
      */
     public function greaterThanComMensagemAssert() {
-        Assert\that(0, "meu número")->min(1);
+        Assert\that(0, "mensagem")->min(1);
     }
     
     /**
      * @test
      */
     public function greaterThanComMensagemVerify() {        
-        verify("meu número", 0)->greaterThan(1);
+        verify("mensagem", 0)->greaterThan(1);
     }
-
+    
+    /**
+     * @test
+     */
+    public function greatherThanComMensagemMatcherPHPUnit() {
+        $this->assertThat(0, $this->greaterThan(1), "mensagem");
+    }
+    
+    
 }

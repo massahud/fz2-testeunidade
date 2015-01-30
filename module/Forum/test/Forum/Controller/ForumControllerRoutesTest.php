@@ -21,7 +21,7 @@ class ForumControllerRoutesTest extends AbstractHttpControllerTestCase {
     public function setUp() {
         // cria aplicação com configuração de testes
         $this->setApplicationConfig(
-                Bootstrap::getApplicationConfig()
+                Bootstrap::getApplicationConfigSqliteMemoria()
         );
         parent::setUp();
         

@@ -32,6 +32,11 @@ class ForumService {
         return $q->getResult();
     }
 
+    /**
+     * 
+     * @param int $id
+     * @return Forum\Model\Forum
+     */
     public function find($id) {
         return $this->em->find('Forum\Model\Entidade\Forum', $id);
     }

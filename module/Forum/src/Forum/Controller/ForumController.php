@@ -51,7 +51,9 @@ class ForumController extends AbstractActionController {
     }
 
     public function topicosAction() {
-        return new ViewModel();
+        $forum = $this->forumService->find($this->params('forumId'));
+        return array('topicos'=>$forum->getTopicos());
+        
     }
 
 }
