@@ -63,5 +63,21 @@ class ListarTopicosTest extends AbstractHttpControllerTestCase {
         $this->assertQueryContentContains('/div#topicos/ul/li', $topicoNaoFunciona->getTitulo());
         
     }
+    
+    /**
+     * @test
+     */
+    public function deveExibirAMensagemNaoHaTopicosAoAcessarUmForumSemTopicos() {
+                
+        $semTopicos = $this->repo->getReference(LoadForumData::FORUM_SEM_TOPICOS);
+        
+        $this->dispatch("/forum/".$semTopicos->getId());
+        
+        $this->assertQueryCount('/div#topicos/ul/li', 0);
+        
+        $this->assertQueryContentContains('/div#topicos', 'Não há topicos');                
+    }        
+    
+    
 
 }
