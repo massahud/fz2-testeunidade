@@ -19,7 +19,13 @@ use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
  * @author massahud
  */
 class ListarForunsTest extends AbstractHttpControllerTestCase {
-
+    
+    /** 
+     *
+     * @var \Doctrine\Common\DataFixtures\ReferenceRepository
+     */
+    private $repo;
+    
     public function setUp() {
         // cria aplicação com configuração de testes
         $this->setApplicationConfig(
@@ -42,25 +48,56 @@ class ListarForunsTest extends AbstractHttpControllerTestCase {
         $executor = new ORMExecutor($em, $purger);
         $executor->execute($fixtures);
         $this->repo = $executor->getReferenceRepository();
-        
     }
     
     /**
      * @test
      */
-    public function deveListarOsForunsAoAcessarOModulo() {
+    public function deveListarOsNomesDosForunsAoAcessarOModulo() {
         $comunidade = $this->repo->getReference(LoadForumData::FORUM_COMUNIDADE);
         $duvidas = $this->repo->getReference(LoadForumData::FORUM_DUVIDAS);
         $semTopicos = $this->repo->getReference(LoadForumData::FORUM_SEM_TOPICOS);
         
         $this->dispatch('/forum');
         
-        $this->assertQueryCount('/div#foruns/ul/li', 3);
-        
-        $this->assertQueryContentContains('/div#foruns/ul/li', $comunidade->getNome());
-        $this->assertQueryContentContains('/div#foruns/ul/li', $duvidas->getNome());
-        $this->assertQueryContentContains('/div#foruns/ul/li', $semTopicos->getNome());
+        $this->assertQueryCount('li.forum', 3);
+        $this->assertQueryContentContains('li.forum', $comunidade->getNome());
+        $this->assertQueryContentContains('li.forum', $duvidas->getNome());
+        $this->assertQueryContentContains('li.forum', $semTopicos->getNome());
         
     }
+    
+     /**
+     * @test
+     */
+    public function deveColocarUmLinkParaOIdDeCadaForum() {
+        $comunidade = $this->repo->getReference(LoadForumData::FORUM_COMUNIDADE);
+        $duvidas = $this->repo->getReference(LoadForumData::FORUM_DUVIDAS);
+        $semTopicos = $this->repo->getReference(LoadForumData::FORUM_SEM_TOPICOS);
+        
+        $this->dispatch('/forum');
+                                
+        $this->assertXpathQueryContentContains('//li[@class="forum"]/a/@href', 'forum/'.$comunidade->getId());
+        $this->assertXpathQueryContentContains('//li[@class="forum"]/a/@href', 'forum/'.$duvidas->getId());
+        $this->assertXpathQueryContentContains('//li[@class="forum"]/a/@href', 'forum/'.$semTopicos->getId());
+    }   
+    
+    /**
+     * @test
+     */
+    public function deveListarOsForunsEmOrdemAlfabetica() {
+        $comunidade = $this->repo->getReference(LoadForumData::FORUM_COMUNIDADE);
+        $duvidas = $this->repo->getReference(LoadForumData::FORUM_DUVIDAS);
+        $semTopicos = $this->repo->getReference(LoadForumData::FORUM_SEM_TOPICOS);
+        
+        $this->dispatch('/forum');
+               
+        $this->assertXpathQueryContentContains('//li[@class="forum" and position()=1]', $comunidade->getNome());
+        $this->assertXpathQueryContentContains('//li[@class="forum" and position()=2]', $duvidas->getNome());
+        $this->assertXpathQueryContentContains('//li[@class="forum" and position()=3]', $semTopicos->getNome());
+    }
+
+    
+    
 
 }

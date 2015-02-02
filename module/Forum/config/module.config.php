@@ -52,24 +52,7 @@ return array(
                                 'action' => 'topicos',
                             ),
                         ),
-                        'may_terminate' => true,
-                        'child_routes' => array(                            
-                            'topico' => array(
-                                'type' => 'Segment',
-                                'options' => array(
-                                    'route' => '/topico/:topicoId[/:action]',
-                                    'constraints' => array(
-                                        'topicoId' => '[0-9]+',
-                                        'action' => '[0-9a-zA-Z_-]+',
-                                    ),
-                                    'defaults' => array(
-                                        '__NAMESPACE__' => 'Forum\Controller',
-                                        'controller' => 'Forum',
-                                        'action' => 'topico',
-                                    ),
-                                )
-                            )
-                        )
+                        'may_terminate' => true                        
                     ),
                 )
             ),

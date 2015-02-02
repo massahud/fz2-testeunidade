@@ -2,6 +2,8 @@
 
 namespace Forum\Model\Entidade;
 
+use DateTime;
+use InvalidArgumentException;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,7 +58,7 @@ class Topico {
 
     /**
      *
-     * @var \DateTime
+     * @var DateTime
      * @ORM\Column(type="datetime")
      */
     private $dataCriacao;
@@ -67,12 +69,33 @@ class Topico {
      * @param string $usuario
      * @param string $titulo
      * @param string $texto
+     * @param DateTime $dataCriacao
      */
-    function __construct(Forum $forum = NULL, $usuario = NULL, $titulo = NULL, $texto = NULL) {
+    function __construct(Forum $forum, $usuario, $titulo, $texto, DateTime $dataCriacao) {
+        if ($forum == NULL) {
+            throw new InvalidArgumentException("Forum não pode ser nulo");
+        }
+        if ($usuario == NULL) {
+            throw new InvalidArgumentException("Usuário não pode ser nulo");
+        }
+        if ($titulo == NULL) {
+            throw new InvalidArgumentException("Título não pode ser nulo");
+        }
+        if ($texto == NULL) {
+            throw new InvalidArgumentException("Texto não pode ser nulo");
+        }
+        if ($dataCriacao == NULL) {
+            throw new InvalidArgumentException("Data de criação não pode ser nula");
+        }
         $this->forum = $forum;
         $this->usuario = $usuario;
         $this->titulo = $titulo;
         $this->texto = $texto;
+        $this->dataCriacao = $dataCriacao;
+    }
+
+    function getId() {
+        return $this->id;
     }
 
     public function setForum($forum) {
@@ -83,25 +106,25 @@ class Topico {
         return $this->forum;
     }
 
-    function setUsuario($usuario) {
-        $this->usuario = $usuario;
-    }
+//    function setUsuario($usuario) {
+//        $this->usuario = $usuario;
+//    }
 
     public function getUsuario() {
         return $this->usuario;
     }
 
-    function setTitulo($titulo) {
-        $this->titulo = $titulo;
-    }
+//    function setTitulo($titulo) {
+//        $this->titulo = $titulo;
+//    }
 
     public function getTitulo() {
         return $this->titulo;
     }
 
-    function setTexto($texto) {
-        $this->texto = $texto;
-    }
+//    function setTexto($texto) {
+//        $this->texto = $texto;
+//    }
 
     public function getTexto() {
         return $this->texto;
@@ -113,14 +136,14 @@ class Topico {
 
     /**
      * 
-     * @param \DateTime $data
+     * @param DateTime $data
      */
-    public function setDataCriacao(\DateTime $data) {
+    public function setDataCriacao(DateTime $data) {
         $this->dataCriacao = $data;
     }
 
     /**
-     * @return \DateTime data de criação
+     * @return DateTime data de criação
      */
     public function getDataCriacao() {
         return $this->dataCriacao;

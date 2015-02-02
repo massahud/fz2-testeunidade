@@ -191,17 +191,6 @@ class Forum extends \Forum\Model\Entidade\Forum implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function setNome($nome)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNome', array($nome));
-
-        return parent::setNome($nome);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getNome()
     {
 

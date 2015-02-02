@@ -21,17 +21,16 @@ class LoadForumData extends AbstractFixture implements OrderedFixtureInterface {
 
     public function load(ObjectManager $manager) {
         $forumComunidade = new Forum('Comunidade');
-        $forumDuvidas = new Forum('Dúvidas');
         $forumSemTopicos = new Forum('Sem tópicos');
+        $forumDuvidas = new Forum('Dúvidas');
         $manager->persist($forumComunidade);
-        $manager->persist($forumDuvidas);
         $manager->persist($forumSemTopicos);
+        $manager->persist($forumDuvidas);
         $manager->flush();
-
-        print 'flush forum'."\n";
-        $this->addReference(self::FORUM_COMUNIDADE, $forumComunidade);
-        $this->addReference(self::FORUM_DUVIDAS, $forumDuvidas);
+        
+        $this->addReference(self::FORUM_COMUNIDADE, $forumComunidade);        
         $this->addReference(self::FORUM_SEM_TOPICOS, $forumSemTopicos);
+        $this->addReference(self::FORUM_DUVIDAS, $forumDuvidas);
     }
 
     public function getOrder() {

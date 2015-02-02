@@ -25,14 +25,32 @@ class LoadTopicoData extends AbstractFixture implements \Doctrine\Common\DataFix
         $forumComunidade = $this->getReference(LoadForumData::FORUM_COMUNIDADE);
         $forumDuvidas = $this->getReference(LoadForumData::FORUM_DUVIDAS);
 
-        $topicoApresentacao = new Topico($forumComunidade, 'massahud', 'Apresentação', 'Pessoal, usem este tópico para se apresentar aos demais usuários');
-        $topicoApresentacao->setDataCriacao(DateTime::createFromFormat(DateTime::W3C, '2015-01-01T00:30:23-02:00'));
+        $topicoApresentacao = new Topico(
+                $forumComunidade, 
+                'massahud', 
+                'Apresentação', 
+                'Pessoal, usem este tópico para se apresentar aos demais usuários',
+                DateTime::createFromFormat(DateTime::W3C, '2015-01-01T00:30:23-02:00')
+        );
 
-        $topicoSuporte = new Topico($forumDuvidas, 'usuario', 'Suporte', 'Preciso de ajuda para fazer xxx');
-        $topicoSuporte->setDataCriacao(DateTime::createFromFormat(DateTime::W3C, '2015-01-01T09:00:01-02:00'));
 
-        $topicoNaoFunciona = new Topico($forumDuvidas, 'bios', 'Não funciona', 'Não consigo de jeito nenhum fazer yyy funcionar');
-        $topicoNaoFunciona->setDataCriacao(DateTime::createFromFormat(DateTime::W3C, '2015-01-01T09:00:00-02:00'));
+        $topicoSuporte = new Topico(
+                $forumDuvidas, 
+                'usuario', 
+                'Suporte', 
+                'Preciso de ajuda para fazer xxx', 
+                DateTime::createFromFormat(DateTime::W3C, '2015-01-01T09:00:01-02:00')
+        );
+
+
+        $topicoNaoFunciona = new Topico(
+                $forumDuvidas, 
+                'bios', 
+                'Não funciona',
+                'Não consigo de jeito nenhum fazer yyy funcionar', 
+                DateTime::createFromFormat(DateTime::W3C, '2015-01-01T09:00:00-02:00')
+        );
+
 
         $manager->persist($topicoApresentacao);
         $manager->persist($topicoSuporte);

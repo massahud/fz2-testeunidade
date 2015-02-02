@@ -1,10 +1,11 @@
 <div id='foruns'>
-
     <ul>
         <?php
+        
         foreach ($this->foruns as $forum) {
-            echo "<li>" . $forum->getNome() . "</li>";
+            echo "<li class='forum'><a href='forum/" . $forum->getId() . "'>" . $forum->getNome() . "</a></li>";
         }
         ?>
+    </ul>
 
 </div>

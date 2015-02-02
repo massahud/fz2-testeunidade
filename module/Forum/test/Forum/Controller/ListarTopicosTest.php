@@ -19,6 +19,12 @@ use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
  * @author massahud
  */
 class ListarTopicosTest extends AbstractHttpControllerTestCase {
+    
+    /** 
+     *
+     * @var \Doctrine\Common\DataFixtures\ReferenceRepository
+     */
+    private $repo;
 
     public function setUp() {
         // cria aplicação com configuração de testes
@@ -44,6 +50,7 @@ class ListarTopicosTest extends AbstractHttpControllerTestCase {
         $this->repo = $executor->getReferenceRepository();
         
     }
+        
        
     
     /**
@@ -57,11 +64,9 @@ class ListarTopicosTest extends AbstractHttpControllerTestCase {
         
         $this->dispatch("/forum/".$duvidas->getId());
         
-        $this->assertQueryCount('/div#topicos/ul/li', 2);
-        
-        $this->assertQueryContentContains('/div#topicos/ul/li', $topicoSuporte->getTitulo());
-        $this->assertQueryContentContains('/div#topicos/ul/li', $topicoNaoFunciona->getTitulo());
-        
+        $this->assertQueryCount('li.topico', 2);        
+        $this->assertQueryContentContains('li.topico', $topicoSuporte->getTitulo());
+        $this->assertQueryContentContains('li.topico', $topicoNaoFunciona->getTitulo());
     }
     
     /**
@@ -73,11 +78,8 @@ class ListarTopicosTest extends AbstractHttpControllerTestCase {
         
         $this->dispatch("/forum/".$semTopicos->getId());
         
-        $this->assertQueryCount('/div#topicos/ul/li', 0);
-        
-        $this->assertQueryContentContains('/div#topicos', 'Não há topicos');                
-    }        
-    
-    
+        $this->assertNotQuery('li.topico');
+        $this->assertQueryContentContains('span', 'Não há tópicos');
+    }
 
 }

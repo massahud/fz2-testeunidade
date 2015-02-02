@@ -1,10 +1,16 @@
 <div id='topicos'>
-
+    <?php
+    if (sizeof($this->topicos) == 0) {
+        echo '<span id="sem-topicos">Não há tópicos</span>';
+    }
+    ?>
     <ul>
         <?php
         foreach ($this->topicos as $topico) {
-            echo "<li>" . $topico->getTitulo() . "</li>";
+            echo "<li class='topico'>" . $topico->getTitulo() . "</li>";
         }
         ?>
+    </ul>
+
 
 </div>

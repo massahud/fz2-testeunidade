@@ -176,6 +176,21 @@ class Topico extends \Forum\Model\Entidade\Topico implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setForum($forum)
     {
 
@@ -198,17 +213,6 @@ class Topico extends \Forum\Model\Entidade\Topico implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setUsuario($usuario)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsuario', array($usuario));
-
-        return parent::setUsuario($usuario);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getUsuario()
     {
 
@@ -220,34 +224,12 @@ class Topico extends \Forum\Model\Entidade\Topico implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setTitulo($titulo)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitulo', array($titulo));
-
-        return parent::setTitulo($titulo);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getTitulo()
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitulo', array());
 
         return parent::getTitulo();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setTexto($texto)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTexto', array($texto));
-
-        return parent::setTexto($texto);
     }
 
     /**

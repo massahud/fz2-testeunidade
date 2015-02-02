@@ -33,7 +33,7 @@ class Comentario {
      * 
      * @var string 
      * @ORM\Column(type="string")
-     */    
+     */
     private $usuario;
 
     /**
@@ -56,23 +56,19 @@ class Comentario {
      * @param string $usuario
      * @param string $texto
      */
-    public function __construct(Topico $topico = NULL, $usuario = NULL, $texto = NULL) {
+    public function __construct(Topico $topico, $usuario, $texto, DateTime $dataCriacao) {
         $this->topico = $topico;
         $this->usuario = $usuario;
         $this->texto = $texto;
+        $this->dataCriacao = $dataCriacao;
     }
-    
+
     function getId() {
         return $this->id;
     }
 
-    
     public function getTopico() {
         return $this->topico;
-    }
-
-    public function setTopico($topico) {
-        $this->topico = $topico;
     }
 
     public function getUsuario() {
@@ -83,17 +79,6 @@ class Comentario {
         return $this->texto;
     }
 
-    /**
-     * 
-     * @param \DateTime $data
-     */
-    public function setDataCriacao(\DateTime $data) {
-        $this->dataCriacao = $data;
-    }
-
-    /**
-     * @return \DateTime data de criação
-     */
     public function getDataCriacao() {
         return $this->dataCriacao;
     }

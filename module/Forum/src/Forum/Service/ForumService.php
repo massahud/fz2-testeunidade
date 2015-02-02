@@ -28,7 +28,7 @@ class ForumService {
     }
     
     public function listar() {
-        $q = $this->em->createQuery('select f from Forum\Model\Entidade\Forum f');
+        $q = $this->em->createQuery('select f from Forum\Model\Entidade\Forum f order by f.nome');
         return $q->getResult();
     }
 

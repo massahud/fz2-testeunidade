@@ -34,16 +34,15 @@ class Forum {
      */
     private $topicos = array();
 
-    public function __construct($nome = NULL) {
+    public function __construct($nome) {
+        if ($nome == NULL) {
+            throw new \InvalidArgumentException("Nome não pode ser nulo");
+        }
         $this->nome = $nome;
     }
 
     function getId() {
         return $this->id;
-    }
-
-    public function setNome($nome) {
-        $this->nome = $nome;
     }
 
     public function getNome() {
