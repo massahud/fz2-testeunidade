@@ -1,11 +1,12 @@
 <?php
 
-namespace Forum\Controller;
+namespace Forum\Aceitacao;
 
 use Bootstrap;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\Common\DataFixtures\ReferenceRepository;
 use Forum\Fistures\Simples\LoadForumData;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
@@ -22,7 +23,7 @@ class ListarForunsTest extends AbstractHttpControllerTestCase {
     
     /** 
      *
-     * @var \Doctrine\Common\DataFixtures\ReferenceRepository
+     * @var ReferenceRepository
      */
     private $repo;
     

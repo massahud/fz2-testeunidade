@@ -1,12 +1,14 @@
 <?php
 
-namespace Forum\Controller;
+namespace Forum\Aceitacao;
 
 use Bootstrap;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\Common\DataFixtures\ReferenceRepository;
 use Forum\Fistures\Simples\LoadForumData;
+use Forum\Fistures\Simples\LoadTopicoData;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
@@ -22,7 +24,7 @@ class ListarTopicosTest extends AbstractHttpControllerTestCase {
     
     /** 
      *
-     * @var \Doctrine\Common\DataFixtures\ReferenceRepository
+     * @var ReferenceRepository
      */
     private $repo;
 
@@ -59,8 +61,8 @@ class ListarTopicosTest extends AbstractHttpControllerTestCase {
     public function deveListarOsTopicosAoAcessarUmForum() {
                 
         $duvidas = $this->repo->getReference(LoadForumData::FORUM_DUVIDAS);
-        $topicoSuporte = $this->repo->getReference(\Forum\Fistures\Simples\LoadTopicoData::TOPICO_SUPORTE);
-        $topicoNaoFunciona = $this->repo->getReference(\Forum\Fistures\Simples\LoadTopicoData::TOPICO_NAO_FUNCIONA);
+        $topicoSuporte = $this->repo->getReference(LoadTopicoData::TOPICO_SUPORTE);
+        $topicoNaoFunciona = $this->repo->getReference(LoadTopicoData::TOPICO_NAO_FUNCIONA);
         
         $this->dispatch("/forum/".$duvidas->getId());
         

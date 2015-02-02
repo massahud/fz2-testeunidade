@@ -56,7 +56,7 @@ class Comentario {
      * @param string $usuario
      * @param string $texto
      */
-    public function __construct(Topico $topico, $usuario, $texto, DateTime $dataCriacao) {
+    public function __construct(Topico $topico, $usuario, $texto, \DateTime $dataCriacao) {
         $this->topico = $topico;
         $this->usuario = $usuario;
         $this->texto = $texto;

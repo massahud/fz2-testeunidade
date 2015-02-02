@@ -1,6 +1,6 @@
 <?php
 
-namespace Forum\Controller;
+namespace Forum\Rotas;
 
 use Bootstrap;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
