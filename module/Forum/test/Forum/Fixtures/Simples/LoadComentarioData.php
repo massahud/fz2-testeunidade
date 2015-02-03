@@ -25,14 +25,26 @@ class LoadComentarioData extends AbstractFixture implements OrderedFixtureInterf
         $topicoSuporte = $this->getReference(LoadTopicoData::TOPICO_SUPORTE);
         $topicoNaoFunciona = $this->getReference(LoadTopicoData::TOPICO_NAO_FUNCIONA);
 
-        $comentarioForumErrado = new Comentario($topicoSuporte, 'AdminChato', 'Esse não é o fórum correto de se pedir isso, fechando o topico.');
-        $comentarioForumErrado->setDataCriacao(DateTime::createFromFormat(DateTime::W3C, '2015-01-22T16:30:23-02:00'));
+        $comentarioForumErrado = new Comentario(
+                $topicoSuporte, 
+                'AdminChato', 
+                'Esse não é o fórum correto de se pedir isso, fechando o topico.',
+                DateTime::createFromFormat(DateTime::W3C, '2015-01-22T16:30:23-02:00')
+        );
 
-        $comentarioRespostaPadrao = new Comentario($topicoNaoFunciona, 'Atendente', 'Senhor, já tentou desligar e ligar o aparelho?');
-        $comentarioRespostaPadrao->setDataCriacao(DateTime::createFromFormat(DateTime::W3C, '2015-01-10T08:00:00-02:00'));
+        $comentarioRespostaPadrao = new Comentario(
+                $topicoNaoFunciona, 
+                'Atendente', 
+                'Senhor, já tentou desligar e ligar o aparelho?',
+                DateTime::createFromFormat(DateTime::W3C, '2015-01-10T08:00:00-02:00')
+        );
 
-        $comentarioJaTentei = new Comentario($topicoNaoFunciona, 'bios', 'Foi a primeira coisa que tentei!');
-        $comentarioJaTentei->setDataCriacao(DateTime::createFromFormat(DateTime::W3C, '2015-01-10T08:24:00-02:00'));
+        $comentarioJaTentei = new Comentario(
+                $topicoNaoFunciona, 
+                'bios', 
+                'Foi a primeira coisa que tentei!',
+                DateTime::createFromFormat(DateTime::W3C, '2015-01-10T08:24:00-02:00')
+        );
 
         $manager->persist($comentarioForumErrado);
         $manager->persist($comentarioRespostaPadrao);

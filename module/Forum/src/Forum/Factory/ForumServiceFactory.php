@@ -30,7 +30,7 @@ class ForumServiceFactory implements FactoryInterface {
      {
 //         $realServiceLocator = $serviceLocator->getServiceLocator();
          $em = $serviceLocator->get('Doctrine\ORM\EntityManager');
-
-         return new ForumService($em);
+         $timeService = $serviceLocator->get('Forum\Service\TimeService');
+         return new ForumService($em, $timeService);
      }
 }

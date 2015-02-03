@@ -9,6 +9,7 @@
 namespace Forum\Service;
 
 use Doctrine\ORM\EntityManager;
+use Forum\Model\Entidade\Topico;
 
 /**
  * Description of ForumService
@@ -19,12 +20,17 @@ class ForumService {
 
     /**
      *
-     * @var Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     private $em;
+    /**
+     * @var TimeService
+     */
+    private $timeService;
 
-    public function __construct(EntityManager $em) {
+    public function __construct(EntityManager $em, TimeService $timeService) {
         $this->em = $em;
+        $this->timeService = $timeService;
     }
     
     public function listar() {
@@ -39,6 +45,13 @@ class ForumService {
      */
     public function find($id) {
         return $this->em->find('Forum\Model\Entidade\Forum', $id);
+    }
+    
+    public function criarTopico($forum, $usuario, $titulo, $texto) {
+        $topico = new Topico($forum, $usuario, $titulo, $texto, $this->timeService->getDataHoraAtual());
+        $this->em->persist($topico);
+        $this->em->flush($topico);
+        return $topico;
     }
 
 }

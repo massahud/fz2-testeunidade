@@ -1,6 +1,11 @@
 <?php
+namespace Forum\Model\Entidade;
 
-use Forum\Model\Entidade\Comentario;
+use DateTime;
+use Phake;
+use PHPUnit_Framework_TestCase;
+use \Assert;
+
 
 /**
  * Description of ForumTest

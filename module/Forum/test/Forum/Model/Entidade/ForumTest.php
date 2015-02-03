@@ -1,6 +1,9 @@
 <?php
+namespace Forum\Model\Entidade;
 
-use Forum\Model\Entidade\Forum;
+use InvalidArgumentException;
+use PHPUnit_Framework_TestCase;
+use \Assert;
 
 /**
  * Description of ForumTest
@@ -23,7 +26,7 @@ class ForumTest extends PHPUnit_Framework_TestCase {
     
     /**
      * @test     
-     * @expectedException \InvalidArgumentException
+     * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Nome não pode ser nulo
      */
     public function naoPodeSerConstruidoComNomeNull() {

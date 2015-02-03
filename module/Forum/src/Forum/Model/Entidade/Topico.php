@@ -72,9 +72,7 @@ class Topico {
      * @param DateTime $dataCriacao
      */
     function __construct(Forum $forum, $usuario, $titulo, $texto, DateTime $dataCriacao) {
-        if ($forum == NULL) {
-            throw new InvalidArgumentException("Forum não pode ser nulo");
-        }
+        
         if ($usuario == NULL) {
             throw new InvalidArgumentException("Usuário não pode ser nulo");
         }
@@ -84,9 +82,7 @@ class Topico {
         if ($texto == NULL) {
             throw new InvalidArgumentException("Texto não pode ser nulo");
         }
-        if ($dataCriacao == NULL) {
-            throw new InvalidArgumentException("Data de criação não pode ser nula");
-        }
+        
         $this->forum = $forum;
         $this->usuario = $usuario;
         $this->titulo = $titulo;
@@ -96,10 +92,6 @@ class Topico {
 
     function getId() {
         return $this->id;
-    }
-
-    public function setForum($forum) {
-        $this->forum = $forum;
     }
 
     public function getForum() {
@@ -132,14 +124,6 @@ class Topico {
 
     public function getComentarios() {
         return $this->comentarios;
-    }
-
-    /**
-     * 
-     * @param DateTime $data
-     */
-    public function setDataCriacao(DateTime $data) {
-        $this->dataCriacao = $data;
     }
 
     /**

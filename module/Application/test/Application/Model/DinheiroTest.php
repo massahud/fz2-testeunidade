@@ -4,6 +4,8 @@ use Application\Model\Dinheiro;
 /**
  * Description of DinheiroTest
  *
+ * @group unidade
+ * @small
  * @author massahud
  */
 class DinheiroTest extends PHPUnit_Framework_TestCase {

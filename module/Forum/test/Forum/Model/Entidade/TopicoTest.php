@@ -2,7 +2,7 @@
 
 use Forum\Model\Entidade\Topico;
 use Forum\Model\Entidade\Forum;
-
+use \Assert;
 /**
  * Description of ForumTest
  *

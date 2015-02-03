@@ -12,7 +12,10 @@ use \InvalidArgumentException;
 use Phake;
 use Phockito;
 use PHPUnit_Framework_TestCase;
-
+/**
+ * @group unidade
+ * @small
+ */
 class MeuObjeto {
 
     public function funcao() {

@@ -16,5 +16,5 @@ class TimeProvider {
         $date = new \DateTime();
         return (int)$date->format('H');
     }
-    
+
 }

@@ -191,17 +191,6 @@ class Topico extends \Forum\Model\Entidade\Topico implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setForum($forum)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setForum', array($forum));
-
-        return parent::setForum($forum);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getForum()
     {
 
@@ -252,17 +241,6 @@ class Topico extends \Forum\Model\Entidade\Topico implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComentarios', array());
 
         return parent::getComentarios();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDataCriacao(\DateTime $data)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDataCriacao', array($data));
-
-        return parent::setDataCriacao($data);
     }
 
     /**

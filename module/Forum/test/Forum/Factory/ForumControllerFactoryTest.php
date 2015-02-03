@@ -1,11 +1,13 @@
 <?php
+namespace Forum\Factory;
 
-use Forum\Factory\ForumControllerFactory;
-use Forum\Model\Entidade\Forum;
+use Phockito;
+use PHPUnit_Framework_TestCase;
 
 /**
  * Description of ForumServiceFactoryTest
- *
+ * @group unidade
+ * @small
  * @author massahud
  */
 class ForumControllerFactoryTest extends PHPUnit_Framework_TestCase {

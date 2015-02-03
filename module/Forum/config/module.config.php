@@ -12,7 +12,7 @@ return array(
                 'drivers' => array(
                     'Forum\Model\Entidade' => 'forum_entities'
                 )
-            ),            
+            ),
         )
     ),
     'controllers' => array(
@@ -21,8 +21,11 @@ return array(
         ),
     ),
     'service_manager' => array(
-        'factories' => array (
+        'factories' => array(
             'Forum\Service\ForumService' => 'Forum\Factory\ForumServiceFactory'
+        ),
+        'invokables' => array(
+            'Forum\Service\TimeService' => 'Forum\Service\TimeService'
         )
     ),
     'router' => array(
@@ -52,7 +55,21 @@ return array(
                                 'action' => 'topicos',
                             ),
                         ),
-                        'may_terminate' => true                        
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'novo-topico' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/novo-topico',                                    
+                                    'defaults' => array(
+                                        '__NAMESPACE__' => 'Forum\Controller',
+                                        'controller' => 'Forum',
+                                        'action' => 'novoTopico',
+                                    ),
+                                ),
+                                'may_terminate' => true
+                            ),
+                        )
                     ),
                 )
             ),
@@ -61,7 +78,6 @@ return array(
     'view_manager' => array(
         'template_map' => array(
             'forum/forum/index' => __DIR__ . '/../view/forum/forum/index.phtml',
-            'forum/forum/topico' => __DIR__ . '/../view/forum/forum/topico.phtml',
             'forum/forum/topicos' => __DIR__ . '/../view/forum/forum/topicos.phtml',
         )
     )

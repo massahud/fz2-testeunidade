@@ -6,16 +6,17 @@
         <testsuite name="application-testes">
             <directory>./module/Application/test</directory>
         </testsuite>
-        <testsuite name="calc-testes">
-            <directory>./module/Calc/test</directory>
-        </testsuite>
         <testsuite name="forum-testes">
             <directory>./module/Forum/test</directory>
-        </testsuite>
+        </testsuite> 
     </testsuites>    
     <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">module/Application/src</directory>
+            <directory suffix=".php">module/Forum/src</directory>
+        </whitelist>
         <blacklist>
-            <directory suffix=".php">../vendor</directory>
+            <directory suffix=".php">vendor</directory>
         </blacklist>
     </filter>
 </phpunit>

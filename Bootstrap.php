@@ -37,7 +37,6 @@ class Bootstrap {
                 'DoctrineModule',
                 'DoctrineORMModule',
                 'Application',
-                'Calc',
                 'Forum'
             )
         );
@@ -64,7 +63,6 @@ class Bootstrap {
                 'DoctrineModule',
                 'DoctrineORMModule',
                 'Application',
-                'Calc',
                 'Forum'
             )
         );

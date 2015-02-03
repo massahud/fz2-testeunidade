@@ -11,7 +11,6 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'Application',
-        'Calc',
         'Forum'
     ),
     'module_listener_options' => array(

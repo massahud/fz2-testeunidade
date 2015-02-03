@@ -13,7 +13,8 @@ use \Assert;
 /**
  * Description of AssertionTest
  * 
- * 
+ * @group unidade
+ * @small
  * @author massahud
  */
 class AssertionTest extends PHPUnit_Framework_TestCase {
