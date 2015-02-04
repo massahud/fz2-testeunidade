@@ -36,12 +36,12 @@ class DinheiroTest extends PHPUnit_Framework_TestCase {
         expect($dinheiro->getValor())->equals($valor);
         expect($dinheiro->getCotacao())->equals($cotacao);
     }
-    
+        
     /**
      * @test
      * @expectedException \InvalidArgumentException
      */
-    public function naoDeveConstruirComCotacaoNegativa() {
+    public function naoDeveConstruirComCotacaoNegativa() {        
         $dinheiro = new Dinheiro(self::UM_SIMBOLO, self::UM_VALOR, -1);
     }
     

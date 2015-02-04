@@ -21,7 +21,7 @@ class AssertionTest extends PHPUnit_Framework_TestCase {
     
     public function setUp() {
         // COMENTE A LINHA ABAIXO PARA VER EXECUTAR
-//        self::markTestSkipped('teste criado apenas para exibir as mensagens de erro entre bibliotecas de asserções');
+        self::markTestSkipped('teste criado apenas para exibir as mensagens de erro entre bibliotecas de asserções');
     }
     
     /**

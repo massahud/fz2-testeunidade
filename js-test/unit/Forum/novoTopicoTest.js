@@ -35,7 +35,7 @@ describe('Novo topico', function () {
     it('deve criar o ajax passando as entradas obtidas', function () {
         sinon.stub(jQuery, 'ajax');
 
-        Forum.criarRequisicaoAjax();
+        Forum.criarRequisicaoAjaxNovoTopico();
 
         var opts = jQuery.ajax.args[0][0]; // primeiro argumento da primeira chamada
 
@@ -48,11 +48,11 @@ describe('Novo topico', function () {
         jQuery.ajax.restore();
     });
 
-    it('deve adicionar o novo tópico no DOM se retornou OK', function (done) {
+    it('deve adicionar o novo tópico no DOM se ajax retornou OK', function (done) {
         jQuery.ajax = function () {
             return Promise.resolve({'inserido': 'OK'});
         };
-
+        
         Forum.criarNovoTopico().then(function() {
             expect(jQuery('li.topico').length).toBe(2);
             expect(jQuery('li.topico').last().text()).toBe('Um título');

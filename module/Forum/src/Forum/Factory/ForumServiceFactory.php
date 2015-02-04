@@ -26,8 +26,7 @@ class ForumServiceFactory implements FactoryInterface {
       *
       * @return mixed
       */
-     public function createService(ServiceLocatorInterface $serviceLocator)
-     {
+     public function createService(ServiceLocatorInterface $serviceLocator) {
 //         $realServiceLocator = $serviceLocator->getServiceLocator();
          $em = $serviceLocator->get('Doctrine\ORM\EntityManager');
          $timeService = $serviceLocator->get('Forum\Service\TimeService');

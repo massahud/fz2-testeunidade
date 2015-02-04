@@ -52,7 +52,7 @@ class DependeTest extends PHPUnit_Framework_TestCase {
             [0.5], // double
             [PHP_INT_MAX] // maior int
         ];
-    }
+    }    
     
     /**
      * teste para exemplificar dataProvider
@@ -60,6 +60,6 @@ class DependeTest extends PHPUnit_Framework_TestCase {
      * @dataProvider valoresPositivos
      */
     public function deveAceitarValoresPositivos($valor) {        
-        verify($valor)->greaterOrEquals(0);
+        verify($valor)->greaterOrEquals(0);        
     }
 }

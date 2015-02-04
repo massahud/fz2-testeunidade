@@ -40,7 +40,7 @@ class NovoTopicoTest extends AbstractHttpControllerTestCase {
      */
     private $em;
 
-    public function setUp() {
+    public function setUp() {        
         // cria aplicação com configuração de testes
         $this->setApplicationConfig(
                 Bootstrap::getApplicationConfigSqliteMemoria()

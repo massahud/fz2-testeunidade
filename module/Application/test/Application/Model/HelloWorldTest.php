@@ -73,12 +73,13 @@ class HelloWordTest extends PHPUnit_Framework_TestCase {
     /**
      * @test
      * @dataProvider horasDaManha
+     * @var $timeProvider Application\Model\TimeProvider 
      */
     public function deveFalarGoodMorningEntreCincoDaManhaEMeioDia($hora) {
-        $timeProvider = Phake::mock('Application\Model\TimeProvider');
-        $helloWorld = new HelloWorld($timeProvider);
         
-        Phake::when($timeProvider)->getHora()->thenReturn(5);
+        $timeProvider = Phake::mock('Application\Model\TimeProvider');
+        $helloWorld = new HelloWorld($timeProvider);        
+        Phake::when($timeProvider)->getHora()->thenReturn($hora);
         
         $cumprimento = $helloWorld->greet(self::UM_NOME, true);
         
