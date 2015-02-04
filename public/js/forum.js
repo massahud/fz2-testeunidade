@@ -36,5 +36,15 @@ Forum.criarNovoTopico = function () {
     return Promise.resolve(xhr).then(Forum.__inserirTopicoNaPagina);
 };
 
+Forum.__removerTopico = function(idTopico) {
+    return function(resposta) {        
+        if (resposta.apagado === 'OK') {
+            $('li#topico_'+idTopico).remove();
+        }
+    };
+}
 
-               
+Forum.apagarTopico = function(idForum, idTopico) {
+    var xhr = $.getJSON('/tu/forum/'+idForum+'/apagar-topico/'+idTopico);
+    return Promise.resolve(xhr).then(Forum.__removerTopico(idTopico));
+}

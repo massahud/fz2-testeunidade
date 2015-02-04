@@ -10,7 +10,9 @@
     <ul>
         <?php
         foreach ($this->topicos as $topico) {
-            echo "<li class='topico'>" . $topico->getTitulo() . "</li>";
+            echo "<li id='topico_{$topico->getId()}' class='topico'>" 
+            . $topico->getTitulo() 
+            . "<a href='#' onclick='Forum.apagarTopico({$topico->getForum()->getId()},{$topico->getId()});return false'>Apagar</a></li>";
         }
         ?>
     </ul>

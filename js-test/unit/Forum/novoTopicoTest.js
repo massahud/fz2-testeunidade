@@ -39,13 +39,12 @@ describe('Novo topico', function () {
 
         var opts = jQuery.ajax.args[0][0]; // primeiro argumento da primeira chamada
 
-        expect(jQuery.ajax.called).toBeTruthy();
         expect(opts['url']).toEqual('/tu/forum/123/novo-topico');
         expect(opts['data'].usuario).toBe('Um usuário');
         expect(opts.data.titulo).toBe('Um título');
         expect(opts.data.texto).toBe('Um texto');
 
-        jQuery.ajax.restore();
+
     });
 
     it('deve adicionar o novo tópico no DOM se ajax retornou OK', function (done) {

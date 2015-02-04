@@ -12,7 +12,7 @@ class TimeProvider {
     /**
      * @return int valor da hora
      */
-    function getHora() {
+    function getHoraAtual() {
         $date = new \DateTime();
         return (int)$date->format('H');
     }

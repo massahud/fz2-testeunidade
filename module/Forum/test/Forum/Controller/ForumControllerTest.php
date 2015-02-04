@@ -28,6 +28,7 @@ class ForumControllerTest extends PHPUnit_Framework_TestCase {
     const UM_USUARIO = "anonymous";
     const UM_TITULO = "Titulo";
     const UM_TEXTO = "Texto";
+    const OUTRO_ID = 654;
 
     /**
      * @test
@@ -128,6 +129,26 @@ class ForumControllerTest extends PHPUnit_Framework_TestCase {
         $response = $forumController->novoTopicoAction();
 
         expect(Json::decode($response->getContent())->inserido)->equals('ERRO');
+    }
+    
+    /**
+     * @test
+     */
+    public function deveChamarOServicoParaApagarUmTopico() {
+        /* @var $service \Forum\Service\ForumService */
+        $service = Phake::mock('Forum\Service\ForumService');
+        Phake::when($service)->apagarTopico($this->anything())->thenReturn(true);
+        
+        $forumController = new ForumController($service);        
+        $forumController->getEvent()->setRouteMatch(
+                new RouteMatch(['forumId' => self::UM_ID, 
+            'topicoId'=>self::OUTRO_ID]));
+        
+        // exercitando SUT
+        $response = $forumController->apagarTopicoAction();                
+
+        Phake::verify($service)->apagarTopico(self::OUTRO_ID);
+        expect(Json::decode($response->getContent())->apagado)->equals('OK');
     }
 
 }

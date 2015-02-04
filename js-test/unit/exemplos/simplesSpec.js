@@ -12,6 +12,14 @@ describe('teste simples', function () {
         it('should be 1', function () {
             console.log("Hello World!");
             expect(i).toBe(1);
+            
+            sinon.stub(jQuery,'ajax');
+            
+            
+            
+            
+            
+            
         });
     });
     

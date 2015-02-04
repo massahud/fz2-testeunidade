@@ -47,4 +47,12 @@ class ForumController extends AbstractActionController {
         }
     }
 
+    public function apagarTopicoAction() {
+        $topicoId = $this->params('topicoId');
+        if ($this->forumService->apagarTopico($topicoId)) {
+           return $this->getResponse()->setContent(Json::encode(array('apagado' => 'OK')));
+        }
+        return $this->getResponse()->setContent(Json::encode(array('apagado' => 'ERRO')));
+    }
+
 }

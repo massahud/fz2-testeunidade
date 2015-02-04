@@ -23,6 +23,7 @@ class ForumService {
      * @var EntityManager
      */
     private $em;
+
     /**
      * @var TimeService
      */
@@ -32,7 +33,7 @@ class ForumService {
         $this->em = $em;
         $this->timeService = $timeService;
     }
-    
+
     public function listar() {
         $q = $this->em->createQuery('select f from Forum\Model\Entidade\Forum f order by f.nome');
         return $q->getResult();
@@ -46,12 +47,22 @@ class ForumService {
     public function find($id) {
         return $this->em->find('Forum\Model\Entidade\Forum', $id);
     }
-    
+
     public function criarTopico($forum, $usuario, $titulo, $texto) {
         $topico = new Topico($forum, $usuario, $titulo, $texto, $this->timeService->getDataHoraAtual());
         $this->em->persist($topico);
         $this->em->flush($topico);
         return $topico;
+    }
+
+    public function apagarTopico($topicoId) {
+        $topico = $this->em->find('Forum\Model\Entidade\Topico', $topicoId);
+        if (!empty($topico)) {
+            $this->em->remove($topico);
+            $this->em->flush($topico);
+            return true;
+        }
+        return false;
     }
 
 }

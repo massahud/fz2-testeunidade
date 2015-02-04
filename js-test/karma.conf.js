@@ -8,11 +8,12 @@ module.exports = function (config) {
             'js-test/unit/**/*.js',
             {pattern: 'js-test/fixtures/**/*.html', watched: true, served: true, included: false},
             {pattern: 'js-test/fixtures/**/*.json', watched: true, served: true, included: false},
+            {pattern: 'js-test/fixtures/**/*.txt', watched: true, served: true, included: false},
 
         ],
         autoWatch: true,
         frameworks: ['jasmine'],
-        browsers: ['Chrome'],
+        browsers: ['Chrome', 'Firefox'],
         plugins: [
             'karma-chrome-launcher',
             'karma-firefox-launcher',
@@ -25,5 +26,5 @@ module.exports = function (config) {
             suite: '' 
         }
 
-    });
+    }); 
 };

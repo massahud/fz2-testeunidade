@@ -36,7 +36,7 @@ class HelloWorld {
             if (empty($this->timeProvider)) {
                 throw new TemporalSemTimeProviderException();
             }
-            $hora = $this->timeProvider->getHora();
+            $hora = $this->timeProvider->getHoraAtual();
             
             if ($hora >= 5 && $hora < 12) {
                 return sprintf(HelloWorld::HELLO_FORMAT, self::GOOD_MORNING, $name);

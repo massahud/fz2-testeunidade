@@ -60,11 +60,26 @@ return array(
                             'novo-topico' => array(
                                 'type' => 'Literal',
                                 'options' => array(
-                                    'route' => '/novo-topico',                                    
+                                    'route' => '/novo-topico',
                                     'defaults' => array(
                                         '__NAMESPACE__' => 'Forum\Controller',
                                         'controller' => 'Forum',
                                         'action' => 'novoTopico',
+                                    ),
+                                ),
+                                'may_terminate' => true
+                            ),
+                            'apagar-topico' => array(
+                                'type' => 'Segment',
+                                'options' => array(
+                                    'route' => '/apagar-topico/:topicoId',
+                                    'constraints' => array(
+                                        'topicoId' => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        '__NAMESPACE__' => 'Forum\Controller',
+                                        'controller' => 'Forum',
+                                        'action' => 'apagarTopico',
                                     ),
                                 ),
                                 'may_terminate' => true
