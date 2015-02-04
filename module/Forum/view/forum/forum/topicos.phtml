@@ -1,5 +1,8 @@
 <div id='topicos'>
     <?php
+    $this->headScript()->appendFile(
+    $this->basePath().'/js/forum.js',
+    'text/javascript');
     if (sizeof($this->topicos) == 0) {
         echo '<span id="sem-topicos">Não há tópicos</span>';
     }
@@ -11,6 +14,17 @@
         }
         ?>
     </ul>
-
+    
+    <form id="novoTopico"> 
+        
+        <input id="forumId" type="hidden" name="forumId" value="<?php echo $this->forumId?>" />
+        <label for="usuario">Usuário</label><br/>
+        <input id="usuario" type="text" name="usuario" value="Um usuário"/><br/>
+        <label for="titulo">Título</label><br/>
+        <input id="titulo" type="text" name="titulo" value="Um título"/><br/>
+        <label for="texto">Texto</label><br/>
+        <textarea id="texto" name="texto">Um texto</textarea><br/>
+        <a href="#" onclick="Forum.criarNovoTopico();return false">Criar novo topico</a>
+    </form>
 
 </div>

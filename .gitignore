@@ -7,3 +7,4 @@
 .settings
 composer.lock
 /vendor/
+/js-test/test-results.xml
