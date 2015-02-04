@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 40.0.2214 (Windows 8.1)" package="" timestamp="2015-02-04T03:24:43" id="0" hostname="massabook">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.94 Safari/537.36"/>
+    </properties>
+  </testsuite>
+  <testsuite name="Chrome 40.0.2214 (Windows 8.1)" package="" timestamp="2015-02-04T03:24:43" id="0" hostname="massabook" tests="3" errors="0" failures="0" time="0.153">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.94 Safari/537.36"/>
+    </properties>
+    <testcase name="algumas assercoes do jasmine-jquery" time="0.063" classname="Chrome 40.0.2214 (Windows 8.1).carregando fixture html"/>
+    <testcase name="algumas assercoes do jasmine-jquery" time="0.063" classname="Chrome 40.0.2214 (Windows 8.1).carregando fixture html"/>
+    <testcase name="should be 1" time="0.027" classname="Chrome 40.0.2214 (Windows 8.1).teste simples Teste simples"/>
+    <system-out><![CDATA[Chrome 40.0.2214 (Windows 8.1) LOG: 'Hello World!'
+
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>
