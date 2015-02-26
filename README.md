@@ -14,9 +14,9 @@ Os softwares necessários são os seguintes:
 2. Xampp para PHP 5.6: https://www.apachefriends.org/ (após a instalação colocar a pasta **php** no path)
   1. Se o xampp for instalado via zip, é necessário editar todos os arquivos .bat da pasta php e o php.ini, modificando as linhas que possuem o diretorio padrão **/xampp** para o diretório onde o xampp foi descompactado (ex: M:\xampp).
   2. Habilite a extensão openssl do php descomentando a seguinte linha:
-    ````````````````````````````````````````````````````
-    ;extension=php_openssl.dll
-    ````````````````````````````````````````````````````
+        ````````````````````````````````````````````````````
+        ;extension=php_openssl.dll
+        ````````````````````````````````````````````````````
 4. Composer: obtenha o composer.phar em https://getcomposer.org/ e coloque no diretório do php do xampp.
 5. Netbeans com suporte a php e html5: http://www.netbeans.org/downloads . Pegue a versão zip se não tiver permissão de instalação, basta depois instalar os plugins necessários para php/html5
 6. Node.js: http://nodejs.org/ (caso não possua permissão de administrador, siga os passos de [NODE_PORTATIL.md](NODE_PORTATIL.md)
